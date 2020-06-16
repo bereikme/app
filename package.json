@@ -6,7 +6,7 @@
   "author": "Rijk van Zanten <rijk@rngr.org>",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "env.API_URL=https://api.worksdomain.nl:8888 vue-cli-service build",
     "test": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "fix": "prettier --write \"src/**/*.{js,vue,ts}\"",
