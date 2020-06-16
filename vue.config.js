@@ -4,6 +4,9 @@ if (!process.env.API_URL && process.env.NODE_ENV === 'development') {
 `);
 }
 
+process.env.VUE_APP_API_URL = 'https://api.worksdomain.nl:8888/'; 
+
+
 module.exports = {
 	lintOnSave: false,
 	publicPath: process.env.NODE_ENV === 'production' ? '' : '/admin/',
