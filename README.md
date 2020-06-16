@@ -2,7 +2,7 @@
   <img src="https://user-images.githubusercontent.com/522079/43096167-3a1b1118-8e86-11e8-9fb2-7b4e3b1368bc.png" width="40" alt="Directus Logo"/>&nbsp;&nbsp;Directus Admin Application</h1>
 
 > **IMPORTANT:** You do not install this App directly, it is included in the Directus Suite, located here: [`directus/directus`](https://github.com/directus/directus). This repository is only used to help organize the codebase.
-
+Verdomde kut applicatie
 ## Description ##
 
 The Directus Admin Application is a Vue.js powered SPA designed to work with t he Directus API to let the user manage all the data in the connected project. It's the GUI of working with the data in a Directus installation. 
