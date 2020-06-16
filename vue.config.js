@@ -1,6 +1,6 @@
 if (!process.env.API_URL && process.env.NODE_ENV === 'development') {
 	console.log(`
-⚠️   No API URL passed. Using the demo API as a fallback. 
+⚠️   No API URL passed. Using the demo API as a fallback.
 `);
 }
 
@@ -13,7 +13,7 @@ module.exports = {
 		public: '127.0.0.1:8080',
 		proxy: {
 			'/': {
-				target: process.env.API_URL ? process.env.API_URL : 'https://worksdomain.nl/public:8888',
+				target: process.env.API_URL ? process.env.API_URL : 'https://worksdomain.nl/public/',
 				changeOrigin: true
 			}
 		}
