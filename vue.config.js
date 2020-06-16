@@ -1,4 +1,4 @@
-if (!process.env.API_URL && process.env.NODE_ENV === 'development') {
+if (!process.env.API_URL) {
 	console.log(`
 ⚠️   No API URL passed. Using the demo API as a fallback.
 `);
