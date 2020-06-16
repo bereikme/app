@@ -5,7 +5,7 @@
 
 ## Description ##
 
-The Directus Admin Application is a Vue.js powered SPA designed to work with the Directus API to let the user manage all the data in the connected project. It's the GUI of working with the data in a Directus installation. 
+The Directus Admin Application is a Vue.js powered SPA designed to work with t he Directus API to let the user manage all the data in the connected project. It's the GUI of working with the data in a Directus installation. 
 
 ## Installation / Usage
 
