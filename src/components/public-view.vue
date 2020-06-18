@@ -37,6 +37,7 @@ import marked from 'marked';
 
 const defaults = {
 	project_color: 'project-background-color',
+	project_background: { asset_url: null },
 	project_foreground: { asset_url: null },
 	project_name: 'Directus',
 	project_public_note: null
@@ -57,7 +58,10 @@ export default {
 	computed: {
 		...mapGetters(['currentProject']),
 		artStyles() {
-			
+			if (this.project_background?.asset_url) {
+				return { backgroundImage: `url(${this.project_background?.asset_url})` };
+			}
+
 			return {
 				backgroundColor: this.project_color.startsWith('#')
 					? this.project_color
@@ -66,6 +70,9 @@ export default {
 		},
 		project_color() {
 			return this.currentProject?.data?.project_color || defaults.project_color;
+		},
+		project_background() {
+			return this.currentProject?.data?.project_background || defaults.project_background;
 		},
 		project_foreground() {
 			return this.currentProject?.data?.project_foreground || defaults.project_foreground;
@@ -111,6 +118,7 @@ export default {
 		max-width: 872px;
 	}
 
+	
 
 	.content {
 		width: 100%;
@@ -126,7 +134,13 @@ export default {
 }
 
 .art {
-	
+	transition: background-color var(--fast) var(--transition);
+	flex-grow: 1;
+	background-size: cover;
+	background-position: center center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 
 	.logo {
 		width: 100%;
