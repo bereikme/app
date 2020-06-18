@@ -37,7 +37,6 @@ import marked from 'marked';
 
 const defaults = {
 	project_color: 'project-background-color',
-	project_background: { asset_url: null },
 	project_foreground: { asset_url: null },
 	project_name: 'Directus',
 	project_public_note: null
@@ -58,10 +57,7 @@ export default {
 	computed: {
 		...mapGetters(['currentProject']),
 		artStyles() {
-			if (this.project_background?.asset_url) {
-				return { backgroundImage: `url(${this.project_background?.asset_url})` };
-			}
-
+			
 			return {
 				backgroundColor: this.project_color.startsWith('#')
 					? this.project_color
@@ -84,7 +80,7 @@ export default {
 			return publicNote ? marked(publicNote) : null;
 		},
 		version() {
-			return `Vueworks v${version}`;
+			return `Directus v${version}`;
 		}
 	}
 };
