@@ -1,6 +1,6 @@
 {
-    "name": ".works",
-    "short_name": ".works",
+    "name": "Vueworks",
+    "short_name": "Vueworks",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
