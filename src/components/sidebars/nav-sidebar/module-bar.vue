@@ -153,11 +153,16 @@ export default {
 		getDefaultModules() {
 			const modules = [];
 
+			<!--
 			modules.push({
 				link: `/${this.currentProjectKey}/collections`,
 				name: this.$tc('collection', 2),
 				icon: 'box'
 			});
+			
+			Removed by Dirk
+			
+			-->
 
 			if (
 				this.permissions.directus_users.read !== 'none' ||
@@ -169,6 +174,8 @@ export default {
 					icon: 'people'
 				});
 			}
+		
+			<!--
 
 			if (this.permissions.directus_files.read !== 'none') {
 				modules.push({
@@ -177,12 +184,10 @@ export default {
 					icon: 'collections'
 				});
 			}
-
-			modules.push({
-				link: 'https://docs.worksdomain.io',
-				name: this.$t('help_and_docs'),
-				icon: 'help'
-			});
+			
+			Removed by Dirk
+			
+			-->
 
 			modules.push({
 				link: 'https://docs.worksdomain.io',
