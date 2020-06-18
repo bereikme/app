@@ -399,7 +399,7 @@
   "page_not_found_body": "Halaman yang Anda cari sepertinya tidak ada.",
   "password": "Kata Sandi",
   "password_reset_sending": "Sending email...",
-  "password_reset_sent": "If a valid user with this email address exists in Directus, we've sent you a secure link to reset your password.",
+  "password_reset_sent": "If a valid user with this email address exists, we've sent you a secure link to reset your password.",
   "password_reset_successful": "Password successfully reset.",
   "permission_states": {
     "always": "Selalu",
