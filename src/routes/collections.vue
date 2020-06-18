@@ -1,5 +1,9 @@
 <template>
 	<div class="collections">
+		/**
+		
+		Edited by Dirk
+		
 		<v-header
 			:breadcrumb="[
 				{
@@ -9,6 +13,7 @@
 			]"
 			icon="box"
 		/>
+		*/
 		<v-error
 			v-if="items.length === 0"
 			:title="$t('no_collections')"
