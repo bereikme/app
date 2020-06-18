@@ -153,7 +153,7 @@ export default {
 		getDefaultModules() {
 			const modules = [];
 
-			<!--
+			<--!
 			modules.push({
 				link: `/${this.currentProjectKey}/collections`,
 				name: this.$tc('collection', 2),
@@ -175,7 +175,7 @@ export default {
 				});
 			}
 		
-			<!--
+			<--!
 
 			if (this.permissions.directus_files.read !== 'none') {
 				modules.push({
