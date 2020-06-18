@@ -188,7 +188,7 @@
 			"crop_preview_comment": "Crops the file preview to fill the available space."
 		},
 		"file-preview": {
-			"file_preview": "File Preview",
+			"file_preview": "Open",
 			"edit": "Editing Options"
 		},
 		"file-size": {
