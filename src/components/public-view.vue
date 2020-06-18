@@ -59,7 +59,7 @@ export default {
 		...mapGetters(['currentProject']),
 		artStyles() {
 			if (this.project_background?.asset_url) {
-				return { backgroundImage: `url('https://hitfigure.com/wp-content/uploads/2012/03/login-background.jpg'})` };
+				return { backgroundImage: `url(${this.project_background?.asset_url})` };
 			}
 
 			return {
@@ -70,9 +70,6 @@ export default {
 		},
 		project_color() {
 			return this.currentProject?.data?.project_color || defaults.project_color;
-		},
-		project_background() {
-			return this.currentProject?.data?.project_background || defaults.project_background;
 		},
 		project_foreground() {
 			return this.currentProject?.data?.project_foreground || defaults.project_foreground;
@@ -87,7 +84,7 @@ export default {
 			return publicNote ? marked(publicNote) : null;
 		},
 		version() {
-			return `Directus v${version}`;
+			return `Vueworks v${version}`;
 		}
 	}
 };
