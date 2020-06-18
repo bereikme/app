@@ -1,5 +1,5 @@
 // Get the API root URL
-const path = 'https://worksdomain.nl/' + window.location.pathname;
+const path = window.location.pathname;
 const parts = path.split('/');
 const adminIndex = parts.indexOf('admin');
 const apiRootPath = 'https://worksdomain.nl/public/' + parts.slice(0, adminIndex).join('/') + '/';
