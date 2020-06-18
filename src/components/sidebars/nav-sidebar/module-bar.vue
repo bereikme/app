@@ -153,7 +153,7 @@ export default {
 		getDefaultModules() {
 			const modules = [];
 
-			<--!
+			/**
 			modules.push({
 				link: `/${this.currentProjectKey}/collections`,
 				name: this.$tc('collection', 2),
@@ -162,7 +162,7 @@ export default {
 			
 			Removed by Dirk
 			
-			-->
+			*/
 
 			if (
 				this.permissions.directus_users.read !== 'none' ||
@@ -175,7 +175,7 @@ export default {
 				});
 			}
 		
-			<--!
+			/**
 
 			if (this.permissions.directus_files.read !== 'none') {
 				modules.push({
@@ -187,7 +187,7 @@ export default {
 			
 			Removed by Dirk
 			
-			-->
+			*/
 
 			modules.push({
 				link: 'https://docs.worksdomain.io',
