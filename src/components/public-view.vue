@@ -1,6 +1,13 @@
 <template>
 	<div class="public">
 		<div class="container" :class="{ wide }">
+			<a href="https://directus.io" target="_blank" class="logo">
+				<img
+					v-tooltip.right="{ classes: ['inverted'], content: version }"
+					alt="Directus Logo"
+					src="../assets/logo-dark.svg"
+				/>
+			</a>
 			<div class="content">
 				<h1 class="title type-heading-large">{{ heading }}</h1>
 				<slot />

@@ -11,12 +11,12 @@ module.exports = {
 	devServer: {
 		allowedHosts: ['localhost', '.gitpod.io'],
 		public: '127.0.0.1:8080',
-		proxy: {
-			'/': {
-				target: process.env.API_URL ? process.env.API_URL : 'https://worksdomain.nl/public/',
-				changeOrigin: true
-			}
-		}
+		// proxy: {
+		// 	'/': {
+		// 		target: process.env.API_URL ? process.env.API_URL : 'https://demo.directus.io/',
+		// 		changeOrigin: true
+		// 	}
+		// }
 	},
 
 	// There are so many chunks (from all the interfaces / layouts) that we need to make sure to not

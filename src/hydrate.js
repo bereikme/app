@@ -6,7 +6,7 @@ import { version } from '../package.json';
 
 export default async function hydrateStore() {
 	try {
-		await Promise.all([store.dispatch('getProjects'), store.dispatch('getCurrentUser')]);
+		await Promise.all([store.dispatch('getCurrentUser')]);
 
 		// getAllExtensions action will translate some values. We have to make sure to fetch the locales
 		// before fetching the extensions
@@ -20,7 +20,6 @@ export default async function hydrateStore() {
 		} else {
 			await loadLanguageAsync(window.navigator.userLanguage || window.navigator.language);
 		}
-
 		await Promise.all([
 			store.dispatch('latency'),
 			store.dispatch('getAllExtensions'),

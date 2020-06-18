@@ -3,13 +3,13 @@
 
 > **IMPORTANT:** You do not install this App directly, it is included in the Directus Suite, located here: [`directus/directus`](https://github.com/directus/directus). This repository is only used to help organize the codebase.
 
-## Description ##
+## Description
 
 The Directus Admin Application is a Vue.js powered SPA designed to work with the Directus API to let the user manage all the data in the connected project. It's the GUI of working with the data in a Directus installation. 
 
 ## Installation / Usage
 
-**IMPORTANT:** Unless contributing to the project, you shouldn't build the App fromo source. Use [`directus/directus`](/directus/directus) instead.
+**IMPORTANT:** Unless contributing to the project, you shouldn't build the App from source. Use [`directus/directus`](/directus/directus) instead.
 
 1. Clone the repo
 2. Install the depencencies using `yarn`
