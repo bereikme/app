@@ -111,14 +111,6 @@ export default {
 		max-width: 872px;
 	}
 
-	.logo {
-		position: absolute;
-		top: 40px;
-		left: 80px;
-		height: 40px;
-		user-select: none;
-		cursor: help;
-	}
 
 	.content {
 		width: 100%;
@@ -134,13 +126,7 @@ export default {
 }
 
 .art {
-	transition: background-color var(--fast) var(--transition);
-	flex-grow: 1;
-	background-size: cover;
-	background-position: center center;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	
 
 	.logo {
 		width: 100%;
