@@ -59,7 +59,7 @@ export default {
 		...mapGetters(['currentProject']),
 		artStyles() {
 			if (this.project_background?.asset_url) {
-				return { backgroundImage: `url(https://hitfigure.com/wp-content/uploads/2012/03/login-background.jpg})` };
+				return { backgroundImage: `url('https://hitfigure.com/wp-content/uploads/2012/03/login-background.jpg'})` };
 			}
 
 			return {
