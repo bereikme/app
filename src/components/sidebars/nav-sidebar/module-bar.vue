@@ -179,7 +179,13 @@ export default {
 			}
 
 			modules.push({
-				link: 'https://docs.directus.io',
+				link: 'https://docs.worksdomain.io',
+				name: this.$t('help_and_docs'),
+				icon: 'help'
+			});
+
+			modules.push({
+				link: 'https://docs.worksdomain.io',
 				name: this.$t('help_and_docs'),
 				icon: 'help'
 			});
