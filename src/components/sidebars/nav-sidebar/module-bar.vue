@@ -152,12 +152,16 @@ export default {
 
 		getDefaultModules() {
 			const modules = [];
-
+			
+			/**
+			
 			modules.push({
 				link: `/${this.currentProjectKey}/collections`,
 				name: this.$tc('collection', 2),
 				icon: 'menu'
 			});
+			
+			*/
 
 			if (
 				this.permissions.directus_users.read !== 'none' ||
