@@ -5,38 +5,37 @@
   "icon": "favorite_border",
   "options": {
     "textInactive": {
-      "name": "Inactive",
+      "name": "$t:text-inactive-name",
       "comment": "$t:text-inactive-comment",
       "interface": "text-input",
       "options": {
-        "placeholder": "off"
+        "placeholder": "$t:text-inactive-placeholder"
       }
     },
     "iconInactive": {
       "name": "$t:icon-inactive-name",
       "comment": "$t:icon-inactive-comment",
-      "default": "favorite_border",
+      "default": "block",
       "interface": "icon"
     },
     "colorInactive": {
       "name": "$t:color-inactive-name",
       "comment": "$t:color-inactive-comment",
-      "default": "red0",
+      "default": "red",
       "interface": "color-palette"
     },
     "textActive": {
-      "name": "Active",
-      "comment": "on",
-	  "value": "1",
+      "name": "$t:text-active-name",
+      "comment": "$t:text-active-comment",
       "interface": "text-input",
       "options": {
-        "placeholder": "on"
+        "placeholder": "$t:text-active-placeholder"
       }
     },
     "iconActive": {
       "name": "$t:icon-active-name",
       "comment": "$t:icon-active-comment",
-      "default": "favorite",
+      "default": "lock",
       "interface": "icon"
     },
     "colorActive": {
