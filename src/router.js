@@ -172,6 +172,10 @@ const router = new Router({
 			component: Settings
 		},
 		{
+			path: '/:project/shop',
+			component: Shop
+		},
+		{
 			path: '/:project/settings/global',
 			component: SettingsGlobal
 		},
