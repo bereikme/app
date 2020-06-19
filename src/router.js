@@ -9,8 +9,6 @@ import hydrateStore from '@/hydrate';
 
 import Collections from './routes/collections.vue';
 import Items from './routes/items.vue';
-import Shop from './routes/shop.vue';
-import Items from './routes/items.vue';
 import FileLibrary from './routes/file-library.vue';
 import Item from './routes/item.vue';
 import Login from './routes/login.vue';
@@ -168,12 +166,12 @@ const router = new Router({
 			alias: '/:project/activity/:primaryKey'
 		},
 		{
-			path: '/:project/settings',
-			component: Settings
-		},
-		{
 			path: '/:project/shop',
 			component: Shop
+		},
+		{
+			path: '/:project/settings',
+			component: Settings
 		},
 		{
 			path: '/:project/settings/global',
