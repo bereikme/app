@@ -21,12 +21,6 @@ export default {
 	name: 'InterfaceToggleIcon',
 	mixins: [mixin],
 	computed: {
-		icon() {
-			return this.value ? this.options.iconActive : this.options.iconInactive;
-		},
-		colorChange() {
-			return this.value ? this.options.colorActive : this.options.colorInactive;
-		},
 		textChange() {
 			return this.value ? this.options.textActive : this.options.textInactive;
 		},

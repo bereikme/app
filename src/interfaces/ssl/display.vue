@@ -20,9 +20,6 @@ export default {
 		},
 		colorChange() {
 			return this.value ? this.options.colorActive : this.options.colorInactive;
-		},
-		textChange() {
-			return this.value ? this.options.textActive : this.options.textInactive;
 		}
 	}
 };
