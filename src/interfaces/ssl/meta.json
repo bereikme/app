@@ -17,11 +17,12 @@
       "comment": "$t:icon-inactive-comment",
       "default": "favorite_border",
       "interface": "icon"
+	  "icon": "block"
     },
     "colorInactive": {
       "name": "$t:color-inactive-name",
       "comment": "$t:color-inactive-comment",
-      "default": "red-500",
+      "default": "red0",
       "interface": "color-palette"
     },
     "textActive": {
@@ -42,8 +43,9 @@
     "colorActive": {
       "name": "$t:color-active-name",
       "comment": "$t:color-active-comment",
-      "default": "green-500",
-      "interface": "color-palette"
+      "default": "green",
+      "interface": "color-palette",
+	  "icon": "block"
     }
   }
 }
