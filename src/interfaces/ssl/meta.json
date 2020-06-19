@@ -5,11 +5,11 @@
   "icon": "favorite_border",
   "options": {
     "textInactive": {
-      "name": "$t:text-inactive-name",
+      "name": "Inactive",
       "comment": "$t:text-inactive-comment",
       "interface": "text-input",
       "options": {
-        "placeholder": "$t:text-inactive-placeholder"
+        "placeholder": "off"
       }
     },
     "iconInactive": {
@@ -21,15 +21,16 @@
     "colorInactive": {
       "name": "$t:color-inactive-name",
       "comment": "$t:color-inactive-comment",
-      "default": "blue-grey",
+      "default": "red-500",
       "interface": "color-palette"
     },
     "textActive": {
-      "name": "$t:text-active-name",
-      "comment": "$t:text-active-comment",
+      "name": "Active",
+      "comment": "on",
+	  "value": "1",
       "interface": "text-input",
       "options": {
-        "placeholder": "$t:text-active-placeholder"
+        "placeholder": "on"
       }
     },
     "iconActive": {
@@ -41,7 +42,7 @@
     "colorActive": {
       "name": "$t:color-active-name",
       "comment": "$t:color-active-comment",
-      "default": "pink-500",
+      "default": "green-500",
       "interface": "color-palette"
     }
   }
