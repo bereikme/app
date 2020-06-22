@@ -1,7 +1,16 @@
 <template>
 	<v-not-found v-if="notFound" />
 	<div v-else class="route-item-listing">
-	
+		<v-header
+			info-toggle
+			:item-detail="false"
+			:icon="breadcrumbIcon"
+			:settings="collection === 'directus_webhooks'"
+			:title="currentBookmark && currentBookmark.title"
+			:icon-link="
+				collection === 'directus_webhooks' ? `/${currentProjectKey}/settings/` : null
+			"
+		>
 			<template slot="title">
 				<button
 					:class="currentBookmark ? 'active' : null"
