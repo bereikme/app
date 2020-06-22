@@ -393,7 +393,7 @@ export default {
 				});
 			}
 
-			
+			return breadcrumb;
 		},
 		collectionInfo() {
 			return this.$store.state.collections[this.collection];
