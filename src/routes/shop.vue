@@ -1,6 +1,6 @@
 <template>
 	<v-not-found v-if="notFound" />
-	<div v-else class="route-file-library">
+	<div v-else class="route-shop">
 		<v-header info-toggle :breadcrumb="breadcrumb" icon="photo_library">
 			<template slot="title">
 				<button
@@ -188,7 +188,7 @@ export default {
 		breadcrumb() {
 			return [
 				{
-					name: this.$t('file_library'),
+					name: this.$t('shop'),
 					path: `/${this.currentProjectKey}/files`
 				}
 			];

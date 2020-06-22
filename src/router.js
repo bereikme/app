@@ -10,6 +10,7 @@ import hydrateStore from '@/hydrate';
 import Collections from './routes/collections.vue';
 import Items from './routes/items.vue';
 import FileLibrary from './routes/file-library.vue';
+import FileLibrary from './routes/shop.vue';
 import Item from './routes/item.vue';
 import Login from './routes/login.vue';
 
