@@ -369,14 +369,6 @@ export default {
 				});
 			} else {
 				breadcrumb.push(
-					{
-						name: this.$tc('collection', 2),
-						path: `/${this.currentProjectKey}/collections`
-					},
-					{
-						name: this.$helpers.formatCollection(this.collection),
-						path: `/${this.currentProjectKey}/collections/${this.collection}`
-					}
 				);
 			}
 
