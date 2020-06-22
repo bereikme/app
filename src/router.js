@@ -166,10 +166,6 @@ const router = new Router({
 			alias: '/:project/activity/:primaryKey'
 		},
 		{
-			path: '/:project/shop',
-			component: Shop
-		},
-		{
 			path: '/:project/settings',
 			component: Settings
 		},
