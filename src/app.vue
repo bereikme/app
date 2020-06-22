@@ -56,9 +56,9 @@ import isCloudProject from '@/helpers/is-cloud-project';
 import { clone } from 'lodash';
 
 export default {
-	name: 'Directus',
+	name: 'Vueworks',
 	metaInfo: {
-		title: 'Directus'
+		title: 'Vueworks'
 	},
 	components: {
 		VError,
