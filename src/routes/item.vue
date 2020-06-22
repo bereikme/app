@@ -18,59 +18,7 @@
 	</div>
 
 	<div v-else :key="`${collection}-${primaryKey}`" class="edit">
-		<v-header
-			:breadcrumb="breadcrumb"
-			:info-toggle="!newItem && !batch && !activityDetail"
-			:icon-link="iconLink"
-			:icon="singleItem ? collectionInfo.icon || 'box' : 'arrow_back'"
-			item-detail
-			:settings="collection === 'directus_webhooks'"
-		>
-			<template v-if="status" slot="title">
-				<span
-					v-tooltip="statusName"
-					class="status-indicator"
-					:style="{ backgroundColor: `var(--${statusColor})` }"
-				/>
-			</template>
-			<template slot="buttons">
-				<v-header-button
-					v-if="!newItem && !singleItem && permission.delete !== 'none'"
-					icon="delete_outline"
-					icon-color="white"
-					background-color="danger"
-					hover-color="danger-dark"
-					:label="$t('delete')"
-					@click="confirmRemove = true"
-				/>
-
-				<v-header-button
-					v-if="batch && permission.update !== 'none'"
-					:disabled="!editing"
-					:loading="saving"
-					:label="$t('save')"
-					icon="check"
-					icon-color="button-primary-text-color"
-					background-color="button-primary-background-color"
-					hover-color="button-primary-background-color-hover"
-					@click="confirmBatchSave = true"
-				/>
-
-				<v-header-button
-					v-else-if="isNew ? permission.create !== 'none' : permission.update !== 'none'"
-					:disabled="!editing"
-					:loading="saving"
-					:label="$t('save')"
-					:options="saveOptions"
-					icon="check"
-					icon-color="button-primary-text-color"
-					background-color="button-primary-background-color"
-					hover-color="button-primary-background-color-hover"
-					@click="singleItem ? save('stay') : save('leave')"
-					@input="save"
-				/>
-			</template>
-		</v-header>
+		
 
 		<v-info-sidebar v-if="!newItem && !batch" wide item-detail>
 			<v-activity
