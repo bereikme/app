@@ -2,7 +2,7 @@
 	<div v-if="links.length > 0" class="nav-menu">
 		<h3 v-if="title">{{ titleTranslated }}</h3>
 		<nav>
-			<ul> 
+			<ul>
 				<li v-for="{ link, name, icon, color } in links" :key="link">
 					<template v-if="link.startsWith('http')">
 						<a

@@ -181,7 +181,7 @@ export default {
 
 <style lang="scss" scoped>
 .form {
-	--gap-width: var(--form-vertical-gap) 20px;
+	--gap-width: var(--form-vertical-gap) 32px;
 
 	@media (min-width: 1000px) {
 		display: grid;

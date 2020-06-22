@@ -42,7 +42,7 @@
 			</nav>
 		</v-details>
 
-		<!-- <v-details :title="$t('additional_info')" type="break" open>
+		<v-details :title="$t('additional_info')" type="break" open>
 			<nav>
 				<ul>
 					<v-card
@@ -89,9 +89,6 @@
 				</ul>
 			</nav>
 		</v-details>
-		
-		--> 
-		
 		<v-details :title="$t('coming_soon')" type="break" open>
 			<nav>
 				<ul>
@@ -118,13 +115,13 @@
 						icon="storage"
 					/>
 
-					<!-- <v-card
+					<v-card
 						:title="$t('version_and_updates')"
 						disabled
 						:subtitle="version"
 						element="li"
 						icon="update"
-					/> --> 
+					/>
 				</ul>
 			</nav>
 		</v-details>

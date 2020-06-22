@@ -152,16 +152,12 @@ export default {
 
 		getDefaultModules() {
 			const modules = [];
-			
-			/**
-			
+
 			modules.push({
 				link: `/${this.currentProjectKey}/collections`,
 				name: this.$tc('collection', 2),
-				icon: 'menu'
+				icon: 'box'
 			});
-			
-			*/
 
 			if (
 				this.permissions.directus_users.read !== 'none' ||
@@ -173,8 +169,6 @@ export default {
 					icon: 'people'
 				});
 			}
-		
-			/**
 
 			if (this.permissions.directus_files.read !== 'none') {
 				modules.push({
@@ -183,13 +177,9 @@ export default {
 					icon: 'collections'
 				});
 			}
-			
-			Removed by Dirk
-			
-			*/
 
 			modules.push({
-				link: '',
+				link: 'https://docs.directus.io',
 				name: this.$t('help_and_docs'),
 				icon: 'help'
 			});
