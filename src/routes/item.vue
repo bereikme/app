@@ -369,6 +369,14 @@ export default {
 				});
 			} else {
 				breadcrumb.push(
+					{
+						name: this.$tc('collection', 2),
+						path: `/${this.currentProjectKey}/collections`
+					},
+					{
+						name: this.$helpers.formatCollection(this.collection),
+						path: `/${this.currentProjectKey}/collections/${this.collection}`
+					}
 				);
 			}
 
@@ -385,7 +393,7 @@ export default {
 				});
 			}
 
-			return breadcrumb;
+			
 		},
 		collectionInfo() {
 			return this.$store.state.collections[this.collection];
