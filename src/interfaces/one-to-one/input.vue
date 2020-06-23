@@ -111,16 +111,15 @@
 		</template>
 
 		<v-item-select
-				v-if="listingActive"
-				:collection="relation.collection_one.collection"
-				:fields="relatedFields"
-				:filters="[]"
-				single
-				:value="stagedValue || valuePK"
-				@input="stageValue"
-				@done="closeListing"
-				@cancel="cancelListing"
-			/>
+			v-if="selectExisting"
+			:fields="visibleFieldNames"
+			:collection="relation.collection_one.collection"
+			:filters="[]"
+			:value="stagedSelection || selectionPrimaryKeys"
+			@input="stageSelection"
+			@done="closeSelection"
+			@cancel="cancelSelection"
+		/>
 
 		<portal v-if="editItem" to="modal">
 			<v-modal
@@ -416,7 +415,7 @@ export default {
 				if (item[this.relatedPrimaryKeyField] === primaryKey) {
 					const edits = clone(this.editItem);
 
-					// Make sure we remove the one to one field that points to this o2o to prevent this nested item
+					// Make sure we remove the one to one field that points to this o2m to prevent this nested item
 					// to be accidentally assigned to another parent
 					if (edits.hasOwnProperty(oneToOneField)) {
 						delete edits[oneToOneField];
@@ -525,7 +524,7 @@ export default {
 								type === 'translation' ||
 								type === 'array' ||
 								type === 'translation' ||
-								type === 'o2o'
+								type === 'o2m'
 							) {
 								delta[key] = after[key];
 							}
