@@ -101,13 +101,11 @@ export default {
 		margin-top: 20px;
 		background-color: #DF4337;
 		color: white;
-		border-bottom: 2px solid var(--input-border-color);
 	}
 	h2 {
 		font-size: 16px;
+		font-weight: 400;
 		line-height: 32px;
-		font-weight: 300;
-		margin-bottom: 12px;
 		padding-left: 10px;
 		padding-right: 10px;
 		max-width: 100%;
@@ -119,6 +117,7 @@ export default {
 		margin-top: 16px;
 		padding-left: 10px;
 		padding-right: 10px;
+		padding-bottom: 10px;
 		max-width: 100%;
 	}
 	hr {
