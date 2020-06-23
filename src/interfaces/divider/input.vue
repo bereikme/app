@@ -119,7 +119,6 @@ export default {
 		padding-right: 10px;
 		padding-bottom: 10px;
 		max-width: 100%;
-		opacity: 0.5;
 	}
 	hr {
 		border-bottom: 1px solid #DF4337;
