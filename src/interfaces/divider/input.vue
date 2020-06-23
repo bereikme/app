@@ -100,7 +100,7 @@ export default {
 	&.margin {
 		margin-top: 48px;
 		background-color: #DF4337;
-		font-color: white;
+		color: white;
 		border-bottom: 2px solid var(--input-border-color);
 	}
 	h2 {
@@ -108,13 +108,17 @@ export default {
 		line-height: 32px;
 		font-weight: 300;
 		margin-bottom: 12px;
+		padding-left: 10px;
+		padding-right: 10px;
 		max-width: 100%;
-		font-color: white;
+		color: white;
 	}
 	p {
 		font-size: var(--input-font-size);
-		font-color: white;
+		color: white;
 		margin-top: 16px;
+		padding-left: 10px;
+		padding-right: 10px;
 		max-width: 100%;
 	}
 	hr {
