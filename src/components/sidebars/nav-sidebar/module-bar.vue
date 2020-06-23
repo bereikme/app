@@ -189,7 +189,7 @@ export default {
 			}
 
 			modules.push({
-				link: '../domains',
+				link: '../collections/invoices',
 				name: this.$t('invoices'),
 				icon: 'euro-symbol'
 			});
