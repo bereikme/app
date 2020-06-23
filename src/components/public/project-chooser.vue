@@ -1,15 +1,5 @@
 <template>
 	<div v-if="projects && projects.length > 1" class="project-chooser">
-		<span v-tooltip.right="{ classes: ['inverted'], content: 'API URL' }" class="preview">
-			<v-signal class="signal" />
-			<template v-if="currentProject.status === 'successful'">
-				{{ currentProject.data.project_name }}
-			</template>
-			<template v-else>
-				{{ currentProjectKey }}
-			</template>
-			<v-icon class="icon dropdown" color="--input-text-color" name="arrow_drop_down" />
-		</span>
 		<select v-model="currentProjectKey">
 			<option v-for="project in projects" :key="project.key" :value="project.key">
 				<template v-if="project.status === 'successful'">
