@@ -125,4 +125,34 @@ export default {
 		border-bottom: 1px solid #DF4337;
 	}
 }
+
+.hint-style {
+	padding-top: 12px;
+	&.margin {
+		margin-top: 20px;
+		background-color: #DF4337;
+		color: white;
+		border-bottom: 2px solid #DF4337;
+	}
+	h2 {
+		font-size: 16px;
+		font-weight: 400;
+		line-height: 32px;
+		padding-left: 10px;
+		padding-right: 10px;
+		max-width: 100%;
+		color: white;
+	}
+	p {
+		font-size: 16px;
+		color: white;
+		padding-left: 10px;
+		padding-right: 10px;
+		padding-bottom: 10px;
+		max-width: 100%;
+	}
+	hr {
+		border-bottom: 1px solid #DF4337;
+	}
+}
 </style>
