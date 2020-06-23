@@ -188,10 +188,12 @@ export default {
 				});
 			}
 
-			modules.push({
-				link: '../collections/invoices',
-				name: this.$t('invoices'),
-				icon: 'euro-symbol'
+			forEach(moduleExtensions, (info, key) => {
+				modules.push({
+					link: `/${this.currentProjectKey}/collections/${key}`,
+					name: info.name,
+					icon: info.icon
+				});
 			});
 
 			modules.push({
