@@ -18,7 +18,8 @@
           "small": "Small",
           "medium": "Medium",
           "large": "Large",
-		  "warning": "Warning"
+		  "warning": "Warning",
+		  "hint": "Hint"
         }
       }
     },

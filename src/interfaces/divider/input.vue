@@ -101,6 +101,7 @@ export default {
 		margin-top: 20px;
 		background-color: #DF4337;
 		color: white;
+		border-bottom: 2px solid #DF4337;
 	}
 	h2 {
 		font-size: 16px;
@@ -114,11 +115,11 @@ export default {
 	p {
 		font-size: 16px;
 		color: white;
-		margin-top: 16px;
 		padding-left: 10px;
 		padding-right: 10px;
 		padding-bottom: 10px;
 		max-width: 100%;
+		opacity: 0.5;
 	}
 	hr {
 		border-bottom: 1px solid #DF4337;
