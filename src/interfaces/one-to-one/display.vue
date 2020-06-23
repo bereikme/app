@@ -13,7 +13,7 @@ import mixin from '@directus/extension-toolkit/mixins/interface';
 import { forEach } from 'lodash';
 
 export default {
-	name: 'ReadonlyOneToOne',
+	name: 'ReadonlyOneToMany',
 	mixins: [mixin],
 	computed: {
 		itemCount() {

@@ -189,7 +189,7 @@ export default {
 			}
 
 			modules.push({
-				link: `/${this.currentProjectKey}/domains`,
+				link: '../domains',
 				name: this.$t('invoices'),
 				icon: 'euro-symbol'
 			});
