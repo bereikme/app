@@ -79,14 +79,12 @@ export default {
 		margin-top: 48px;
 	}
 	h2 {
-		color: var(--heading-text-color);
 		font-size: 28px;
 		line-height: 32px;
 		font-weight: 300;
 		margin-bottom: 12px;
 	}
 	p {
-		color: var(--note-text-color);
 		font-size: var(--input-font-size);
 		margin-top: 16px;
 	}
