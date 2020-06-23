@@ -1,7 +1,7 @@
 {
-  "name": "$t:o2m",
+  "name": "$t:o2o",
   "version": "2.0.2",
-  "types": ["o2m"],
+  "types": ["o2o"],
   "options": {
     "fields": {
       "name": "$t:visible_columns",
