@@ -191,7 +191,7 @@ export default {
 			modules.push({
 				link: './domains',
 				name: this.$t('order-products'),
-				icon: 'shopping-cart'
+				icon: 'help'
 			});
 
 			modules.push({
