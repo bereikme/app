@@ -189,9 +189,9 @@ export default {
 			}
 
 			modules.push({
-				link: './domains',
-				name: this.$t('order-products'),
-				icon: 'help'
+				link: `/${this.currentProjectKey}/domains`,
+				name: this.$t('invoices'),
+				icon: 'euro-symbol'
 			});
 
 			modules.push({
