@@ -1,5 +1,5 @@
 <template>
-	<div class="interface-one-to-many">
+	<div class="interface-one-to-one">
 		<v-notice v-if="relationshipSetup === false" color="warning" icon="warning">
 			{{ $t('relationship_not_setup') }}
 		</v-notice>
@@ -113,7 +113,7 @@
 		<v-item-select
 			v-if="selectExisting"
 			:fields="visibleFieldNames"
-			:collection="relation.collection_many.collection"
+			:collection="relation.collection_one.collection"
 			:filters="[]"
 			:value="stagedSelection || selectionPrimaryKeys"
 			@input="stageSelection"
@@ -137,7 +137,7 @@
 					<v-form
 						new-item
 						:fields="relatedCollectionFields"
-						:collection="relation.collection_many.collection"
+						:collection="relation.collection_one.collection"
 						:primary-key="editItem[relatedPrimaryKeyField] || '+'"
 						:values="editItem"
 						@stage-value="stageValue"
@@ -155,7 +155,7 @@ import { diff } from 'deep-object-diff';
 import { find, mapValues, clone, orderBy, cloneDeep, merge, forEach, difference } from 'lodash';
 
 export default {
-	name: 'InterfaceOneToMany',
+	name: 'InterfaceOneToOne',
 	mixins: [mixin],
 	data() {
 		return {
@@ -187,8 +187,8 @@ export default {
 		visibleFields() {
 			if (this.relationshipSetup === false) return [];
 
-			const relatedFields = this.relation.collection_many.fields;
-			const recursiveKey = this.relation.field_many.field;
+			const relatedFields = this.relation.collection_one.fields;
+			const recursiveKey = this.relation.field_one.field;
 
 			if (!this.options.fields) {
 				return Object.values(relatedFields)
@@ -240,7 +240,7 @@ export default {
 		},
 
 		relatedPrimaryKeyField() {
-			return find(this.relation.collection_many.fields, { primary_key: true }).field;
+			return find(this.relation.collection_one.fields, { primary_key: true }).field;
 		},
 
 		selectionPrimaryKeys() {
@@ -254,7 +254,7 @@ export default {
 				return null;
 			}
 
-			return find(this.relation.collection_many.fields, { field: sortField });
+			return find(this.relation.collection_one.fields, { field: sortField });
 		},
 
 		sortable() {
@@ -266,15 +266,15 @@ export default {
 		},
 
 		relatedCollectionFields() {
-			const relatedCollectionFields = this.relation.collection_many.fields;
+			const relatedCollectionFields = this.relation.collection_one.fields;
 
-			// Disable editing the many to one that points to this one to many
-			const manyToManyField = this.relation.field_many && this.relation.field_many.field;
+			// Disable editing the one to one that points to this one to one
+			const oneToOneField = this.relation.field_one && this.relation.field_one.field;
 
 			return mapValues(relatedCollectionFields, field => {
 				const fieldClone = clone(field);
 
-				if (fieldClone.field === manyToManyField) {
+				if (fieldClone.field === oneToOneField) {
 					fieldClone.readonly = true;
 				}
 
@@ -332,10 +332,10 @@ export default {
 
 	methods: {
 		async getInitialValue() {
-			const response = await this.$api.getItems(this.relation.collection_many.collection, {
+			const response = await this.$api.getItems(this.relation.collection_one.collection, {
 				fields: '*.*',
 				filter: {
-					[this.relation.field_many.field]: this.primaryKey
+					[this.relation.field_one.field]: this.primaryKey
 				}
 			});
 
@@ -360,17 +360,17 @@ export default {
 		startAddNewItem() {
 			this.addNew = true;
 
-			const relatedCollectionFields = this.relation.collection_many.fields;
+			const relatedCollectionFields = this.relation.collection_one.fields;
 			const defaults = mapValues(relatedCollectionFields, field => field.default_value);
-			const manyToManyField = this.relation.field_many && this.relation.field_many.field;
+			const oneToOneField = this.relation.field_one && this.relation.field_one.field;
 			const tempKey = '$temp_' + shortid.generate();
 
 			if (defaults.hasOwnProperty(this.relatedPrimaryKeyField)) {
 				delete defaults[this.relatedPrimaryKeyField];
 			}
 
-			if (defaults.hasOwnProperty(manyToManyField)) {
-				delete defaults[manyToManyField];
+			if (defaults.hasOwnProperty(oneToOneField)) {
+				delete defaults[oneToOneField];
 			}
 
 			this.items = [
@@ -396,7 +396,7 @@ export default {
 			const isNewItem = typeof primaryKey === 'string' && primaryKey.startsWith('$temp_');
 
 			if (isNewItem === false) {
-				const collection = this.relation.collection_many.collection;
+				const collection = this.relation.collection_one.collection;
 				const res = await this.$api.getItem(collection, primaryKey, { fields: '*.*' });
 				const item = res.data;
 
@@ -409,16 +409,16 @@ export default {
 		saveEditItem() {
 			const primaryKey = this.editItem[this.relatedPrimaryKeyField];
 
-			const manyToManyField = this.relation.field_many && this.relation.field_many.field;
+			const oneToOneField = this.relation.field_one && this.relation.field_one.field;
 
 			this.items = this.items.map(item => {
 				if (item[this.relatedPrimaryKeyField] === primaryKey) {
 					const edits = clone(this.editItem);
 
-					// Make sure we remove the many to one field that points to this o2m to prevent this nested item
+					// Make sure we remove the one to one field that points to this o2m to prevent this nested item
 					// to be accidentally assigned to another parent
-					if (edits.hasOwnProperty(manyToManyField)) {
-						delete edits[manyToManyField];
+					if (edits.hasOwnProperty(oneToOneField)) {
+						delete edits[oneToOneField];
 					}
 
 					return edits;
@@ -464,7 +464,7 @@ export default {
 
 			if (newlyAddedItems.length > 0) {
 				const res = await this.$api.getItem(
-					this.relation.collection_many.collection,
+					this.relation.collection_one.collection,
 					newlyAddedItems.join(','),
 					{
 						fields: '*.*.*'
@@ -493,7 +493,7 @@ export default {
 		emitValue(value) {
 			value = cloneDeep(value);
 
-			const recursiveKey = this.relation.field_many.field;
+			const recursiveKey = this.relation.field_one.field;
 
 			const newValue = value
 				.map(after => {
