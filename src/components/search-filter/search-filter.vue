@@ -373,7 +373,7 @@ export default {
 		.search {
 			width: 100%;
 			height: 44px;
-			border-radius: 22px;
+			border-radius: 3px;
 			display: block;
 			border: 2px solid var(--input-border-color);
 			padding: 10px 40px 10px 40px;

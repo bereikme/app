@@ -159,6 +159,16 @@ export default {
 				icon: 'box'
 			});
 
+			const moduleExtensions = this.$store.state.extensions.modules;
+
+			forEach(moduleExtensions, (info, key) => {
+				modules.push({
+					link: `/${this.currentProjectKey}/ext/${key}`,
+					name: info.name,
+					icon: info.icon
+				});
+			});
+
 			if (
 				this.permissions.directus_users.read !== 'none' ||
 				this.permissions.directus_users.read !== 'mine'
@@ -182,16 +192,6 @@ export default {
 				link: 'https://docs.worksdomain.nl',
 				name: this.$t('help_and_docs'),
 				icon: 'help'
-			});
-
-			const moduleExtensions = this.$store.state.extensions.modules;
-
-			forEach(moduleExtensions, (info, key) => {
-				modules.push({
-					link: `/${this.currentProjectKey}/ext/${key}`,
-					name: info.name,
-					icon: info.icon
-				});
 			});
 
 			return modules;

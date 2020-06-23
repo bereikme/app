@@ -11,7 +11,11 @@
 			:background-color="settings ? 'warning-light' : 'button-tertiary-background-color'"
 		/>
 		<div class="title" :class="{ 'has-breadcrumb': navBreadcrumb }">
-			
+			<ol v-if="navBreadcrumb" class="breadcrumb">
+				<li v-for="{ name, path } in navBreadcrumb" :key="path" class="breadcrumb-item">
+					<router-link :to="path">{{ name }}</router-link>
+				</li>
+			</ol>
 
 			<div class="flex">
 				<h1 class="type-title">{{ title || currentPage.name }}</h1>
