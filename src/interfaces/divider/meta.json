@@ -18,6 +18,7 @@
           "small": "Small",
           "medium": "Medium",
           "large": "Large"
+		  "warning": "Warning"
         }
       }
     },

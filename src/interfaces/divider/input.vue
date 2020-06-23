@@ -94,4 +94,28 @@ export default {
 		border-bottom: 2px solid var(--input-border-color);
 	}
 }
+
+.warning-style {
+	padding-top: 12px;
+	&.margin {
+		margin-top: 48px;
+	}
+	h2 {
+		font-size: 28px;
+		line-height: 32px;
+		font-weight: 300;
+		margin-bottom: 12px;
+		background-color: red;
+	}
+	p {
+		font-size: var(--input-font-size);
+		margin-top: 16px;
+		background-color: red;
+	}
+	hr {
+		border: 0;
+		border-bottom: 2px solid var(--input-border-color);
+		background-color: red;
+	}
+}
 </style>
