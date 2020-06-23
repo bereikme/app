@@ -99,23 +99,26 @@ export default {
 	padding-top: 12px;
 	&.margin {
 		margin-top: 48px;
-		border: 1px solid black;
+		background-color: red;
+		font-color: white;
+		border-bottom: 2px solid var(--input-border-color);
 	}
 	h2 {
 		font-size: 28px;
 		line-height: 32px;
 		font-weight: 300;
 		margin-bottom: 12px;
-		background-color: red;
 		max-width: 100%;
+		font-color: white;
 	}
 	p {
 		font-size: var(--input-font-size);
+		font-color: white;
 		margin-top: 16px;
-		background-color: red;
 		max-width: 100%;
 	}
 	hr {
+		border-bottom: 2px solid red;
 	}
 }
 </style>
