@@ -220,6 +220,10 @@ export default {
 				if (fieldInfo.type.toLowerCase() === 'm2o') {
 					relation = this.$store.getters.m2o(fieldInfo.collection, fieldInfo.field);
 				}
+				
+				if (fieldInfo.type.toLowerCase() === 'o2o') {
+					relation = this.$store.getters.o2o(fieldInfo.collection, fieldInfo.field);
+				}
 
 				if (fieldInfo.type.toLowerCase() === 'o2m') {
 					relation = this.$store.getters.o2m(fieldInfo.collection, fieldInfo.field);
