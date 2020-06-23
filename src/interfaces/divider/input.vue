@@ -98,13 +98,13 @@ export default {
 .warning-style {
 	padding-top: 12px;
 	&.margin {
-		margin-top: 48px;
+		margin-top: 20px;
 		background-color: #DF4337;
 		color: white;
 		border-bottom: 2px solid var(--input-border-color);
 	}
 	h2 {
-		font-size: 28px;
+		font-size: 16px;
 		line-height: 32px;
 		font-weight: 300;
 		margin-bottom: 12px;
@@ -114,7 +114,7 @@ export default {
 		color: white;
 	}
 	p {
-		font-size: var(--input-font-size);
+		font-size: 16px;
 		color: white;
 		margin-top: 16px;
 		padding-left: 10px;
@@ -122,7 +122,7 @@ export default {
 		max-width: 100%;
 	}
 	hr {
-		border-bottom: 2px solid red;
+		border-bottom: 1px solid #DF4337;
 	}
 }
 </style>
