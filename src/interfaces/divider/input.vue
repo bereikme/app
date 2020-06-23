@@ -99,7 +99,7 @@ export default {
 	padding-top: 12px;
 	&.margin {
 		margin-top: 48px;
-		background-color: red;
+		background-color: #DF4337;
 		font-color: white;
 		border-bottom: 2px solid var(--input-border-color);
 	}
