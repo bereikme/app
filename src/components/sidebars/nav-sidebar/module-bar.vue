@@ -189,6 +189,12 @@ export default {
 			}
 
 			modules.push({
+				link: './domains',
+				name: this.$t('order-products'),
+				icon: 'shopping-cart'
+			});
+
+			modules.push({
 				link: 'https://docs.worksdomain.nl',
 				name: this.$t('help_and_docs'),
 				icon: 'help'
