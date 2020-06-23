@@ -153,12 +153,6 @@ export default {
 		getDefaultModules() {
 			const modules = [];
 
-			modules.push({
-				link: `/${this.currentProjectKey}/collections`,
-				name: this.$tc('collection', 2),
-				icon: 'box'
-			});
-
 			const moduleExtensions = this.$store.state.extensions.modules;
 
 			forEach(moduleExtensions, (info, key) => {
