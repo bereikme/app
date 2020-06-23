@@ -111,15 +111,16 @@
 		</template>
 
 		<v-item-select
-			v-if="selectExisting"
-			:fields="visibleFieldNames"
-			:collection="relation.collection_many.collection"
-			:filters="[]"
-			:value="stagedSelection || selectionPrimaryKeys"
-			@input="stageSelection"
-			@done="closeSelection"
-			@cancel="cancelSelection"
-		/>
+				v-if="listingActive"
+				:collection="relation.collection_one.collection"
+				:fields="relatedFields"
+				:filters="[]"
+				single
+				:value="stagedValue || valuePK"
+				@input="stageValue"
+				@done="closeListing"
+				@cancel="cancelListing"
+			/>
 
 		<portal v-if="editItem" to="modal">
 			<v-modal
@@ -137,7 +138,7 @@
 					<v-form
 						new-item
 						:fields="relatedCollectionFields"
-						:collection="relation.collection_many.collection"
+						:collection="relation.collection_one.collection"
 						:primary-key="editItem[relatedPrimaryKeyField] || '+'"
 						:values="editItem"
 						@stage-value="stageValue"
@@ -187,8 +188,8 @@ export default {
 		visibleFields() {
 			if (this.relationshipSetup === false) return [];
 
-			const relatedFields = this.relation.collection_many.fields;
-			const recursiveKey = this.relation.field_many.field;
+			const relatedFields = this.relation.collection_one.fields;
+			const recursiveKey = this.relation.field_one.field;
 
 			if (!this.options.fields) {
 				return Object.values(relatedFields)
@@ -240,7 +241,7 @@ export default {
 		},
 
 		relatedPrimaryKeyField() {
-			return find(this.relation.collection_many.fields, { primary_key: true }).field;
+			return find(this.relation.collection_one.fields, { primary_key: true }).field;
 		},
 
 		selectionPrimaryKeys() {
@@ -254,7 +255,7 @@ export default {
 				return null;
 			}
 
-			return find(this.relation.collection_many.fields, { field: sortField });
+			return find(this.relation.collection_one.fields, { field: sortField });
 		},
 
 		sortable() {
