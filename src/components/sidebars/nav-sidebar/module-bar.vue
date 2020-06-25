@@ -153,13 +153,6 @@ export default {
 		getDefaultModules() {
 			const modules = [];
 
-			forEach(moduleExtensions, (info, key) => {
-				modules.push({
-					link: `/${this.currentProjectKey}/collections/${key}`,
-					name: info.name,
-					icon: info.icon
-				});
-			});
 
 			if (
 				this.permissions.directus_users.read !== 'none' ||
@@ -185,7 +178,13 @@ export default {
 				name: this.$t('help_and_docs'),
 				icon: 'help'
 			});
-
+			
+			modules.push({
+				link: `/${this.currentProjectKey}/collections/invoices}`,
+				name: this.$t('help_and_docs'),
+				icon: 'person'
+			});
+			
 			const moduleExtensions = this.$store.state.extensions.modules;
 
 			forEach(moduleExtensions, (info, key) => {
