@@ -17,9 +17,7 @@
         "choices": {
           "small": "Small",
           "medium": "Medium",
-          "large": "Large",
-		  "warning": "Warning",
-		  "hint": "Hint" 
+          "large": "Large"
         }
       }
     },
