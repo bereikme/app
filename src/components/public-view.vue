@@ -9,6 +9,7 @@
 		</div>
 		<div class="art" :style="artStyles">
 			<img
+				class="logo"
 				src="https://i.pinimg.com/originals/13/48/8c/13488c4947ea22e3038bef82046b4b70.jpg"
 			/>
 			<div

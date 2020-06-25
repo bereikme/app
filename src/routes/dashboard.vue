@@ -1,20 +1,31 @@
 <template>
 	<div class="settings">
 		<v-header :breadcrumb="links" :icon-link="`/${currentProjectKey}/settings`" settings>
+			<template slot="buttons">
+				<v-header-button
+					:disabled="!editing"
+					:loading="saving"
+					:label="$t('save')"
+					icon="check" 
+					background-color="button-primary-background-color"
+					icon-color="button-primary-text-color"
+					@click="save('leave')"
+				/>
+			</template>
 		</v-header>
 		
 		<v-details :title="$t('settings_project')" type="break" open>
 			<nav>
 				<ul>
 					<v-card
-						:title="$t('dashboard_how_to_start')"
+						:title="$t('settings_global')"
 						element="li"
 						:to="`/${currentProjectKey}/settings/global`"
 						icon="public"
 					/>
 					
 					<v-card
-						:title="$t('dashboard_how_to_start')"
+						:title="$t('settings_default')"
 					element="li"
 						:to="`/${currentProjectKey}/settings/default`"
 						icon="public"
@@ -51,14 +62,14 @@
 			<nav>
 				<ul>
 					<v-card
-						:title="$t('dashboard_how_to_start')"
+						:title="$t('settings_global')"
 						element="li"
 						:to="`/${currentProjectKey}/settings/global`"
 						icon="public"
 					/>
 					
 					<v-card
-						:title="$t('dashboard_how_to_start')"
+						:title="$t('settings_default')"
 					element="li"
 						:to="`/${currentProjectKey}/settings/default`"
 						icon="public"
