@@ -153,6 +153,17 @@ export default {
 		getDefaultModules() {
 			const modules = [];
 
+			modules.push({
+				link: `/${this.currentProjectKey}/collections/shop`,
+				name: this.$t('shop'),
+				icon: 'person'
+			});
+			 
+			modules.push({
+				link: `/${this.currentProjectKey}/collections/invoices`,
+				name: this.$t('balance'),
+				icon: 'person'
+			});
 
 			if (
 				this.permissions.directus_users.read !== 'none' ||
@@ -178,13 +189,7 @@ export default {
 				name: this.$t('help_and_docs'),
 				icon: 'help'
 			});
-			
-			modules.push({
-				link: `/${this.currentProjectKey}/collections/invoices`,
-				name: this.$t('invoices'),
-				icon: 'person'
-			});
-			
+						
 			const moduleExtensions = this.$store.state.extensions.modules;
 
 			forEach(moduleExtensions, (info, key) => {
