@@ -104,7 +104,7 @@ export default {
 		this.getRoleCount();
 		this.getActivityCount();
 		this.getWebhookCount();
-	}, 
+	},
 	methods: {
 		getRoleCount() {
 			this.$api

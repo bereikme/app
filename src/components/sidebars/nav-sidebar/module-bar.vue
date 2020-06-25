@@ -153,7 +153,9 @@ export default {
 		getDefaultModules() {
 			const modules = [];
 
-						if (
+			
+
+			if (
 				this.permissions.directus_users.read !== 'none' ||
 				this.permissions.directus_users.read !== 'mine'
 			) {

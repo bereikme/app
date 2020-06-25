@@ -86,7 +86,7 @@ export default {
 	background-color: var(--sidebar-background-color);
 	transform: translateX(220px);
 	transition: transform var(--fast) var(--transition);
- 
+
 	&.active {
 		transform: translateX(0px);
 	}

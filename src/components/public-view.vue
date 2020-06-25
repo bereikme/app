@@ -15,7 +15,7 @@
 			/>
 		</div>
 	</div>
-</template> 
+</template>
 
 <script>
 import { version } from '../../package.json';

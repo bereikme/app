@@ -15,7 +15,7 @@
 				<li v-for="{ name, path } in navBreadcrumb" :key="path" class="breadcrumb-item">
 					<router-link :to="path">{{ name }}</router-link>
 				</li>
-			</ol>--> 
+			</ol>-->
 
 			<div class="flex">
 				<h1 class="type-title">{{ title || currentPage.name }}</h1>
