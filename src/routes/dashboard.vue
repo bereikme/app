@@ -1,4 +1,6 @@
 <template>
+
+
 	<div class="settings-global">
 		<v-header :breadcrumb="links" :icon-link="`/${currentProjectKey}/`" settings>
 			<template slot="buttons">
@@ -13,6 +15,13 @@
 				/>
 			</template>
 		</v-header>
+
+		<v-header title="Dashboard></v-header>
+			<h1 class="style-0">Just an example...</h1>
+			<p>
+			  This is a Directus Module Extension, you can put anything you want in here.
+			</p>
+		</div>
 
 		<v-form
 			:fields="fields"
