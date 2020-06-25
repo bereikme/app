@@ -158,4 +158,24 @@ export default {
 .settings-global {
 	padding: var(--page-padding-top) var(--page-padding) var(--page-padding-bottom);
 }
+
+.settings {
+	padding: var(--page-padding-top) var(--page-padding) var(--page-padding-bottom);
+}
+
+nav ul {
+	padding: 0;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, var(--card-size));
+	grid-gap: var(--card-horizontal-gap);
+
+	li {
+		display: block;
+	}
+}
+
+.signal {
+	fill: var(--white);
+}
+
 </style>
