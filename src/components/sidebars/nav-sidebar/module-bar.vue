@@ -152,7 +152,7 @@ export default {
 
 		getDefaultModules() {
 			const modules = [];
-			
+
 			forEach(moduleExtensions, (info, key) => {
 				modules.push({
 					link: `/${this.currentProjectKey}/collections/${key}`,
@@ -161,7 +161,7 @@ export default {
 				});
 			});
 
- 			if (
+			if (
 				this.permissions.directus_users.read !== 'none' ||
 				this.permissions.directus_users.read !== 'mine'
 			) {
@@ -181,10 +181,12 @@ export default {
 			}
 
 			modules.push({
-				link: 'https://docs.worksdomain.io',
+				link: 'https://docs.directus.io',
 				name: this.$t('help_and_docs'),
 				icon: 'help'
 			});
+
+			const moduleExtensions = this.$store.state.extensions.modules;
 
 			forEach(moduleExtensions, (info, key) => {
 				modules.push({
