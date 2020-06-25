@@ -172,10 +172,7 @@ const router = new Router({
 		},
 		{
 			path: '/:project/dashboard',
-			component: Dashboard,
-			meta: {
-				publicRoute: true
-			}
+			component: Dashboard
 		},
 		{
 			path: '/:project/settings',
