@@ -1,31 +1,20 @@
 <template>
-	<div class="settings-global">
+	<div class="settings">
 		<v-header :breadcrumb="links" :icon-link="`/${currentProjectKey}/settings`" settings>
-			<template slot="buttons">
-				<v-header-button
-					:disabled="!editing"
-					:loading="saving"
-					:label="$t('save')"
-					icon="check" 
-					background-color="button-primary-background-color"
-					icon-color="button-primary-text-color"
-					@click="save('leave')"
-				/>
-			</template>
 		</v-header>
 		
 		<v-details :title="$t('settings_project')" type="break" open>
 			<nav>
 				<ul>
 					<v-card
-						:title="$t('settings_global')"
+						:title="$t('dashboard_how_to_start')"
 						element="li"
 						:to="`/${currentProjectKey}/settings/global`"
 						icon="public"
 					/>
 					
 					<v-card
-						:title="$t('settings_default')"
+						:title="$t('dashboard_how_to_start')"
 					element="li"
 						:to="`/${currentProjectKey}/settings/default`"
 						icon="public"
@@ -155,9 +144,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.settings-global {
-	padding: var(--page-padding-top) var(--page-padding) var(--page-padding-bottom);
-}
 
 .settings {
 	padding: var(--page-padding-top) var(--page-padding) var(--page-padding-bottom);
