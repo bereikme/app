@@ -28,6 +28,8 @@ const Settings = () =>
 	import(/* webpackChunkName: "settings_settings" */ './routes/settings/settings.vue');
 const SettingsGlobal = () =>
 	import(/* webpackChunkName: "settings_global" */ './routes/settings/global.vue');
+const SettingsDefault = () =>
+	import(/* webpackChunkName: "settings_default" */ './routes/settings/default.vue');
 const SettingsCollections = () =>
 	import(/* webpackChunkName: "settings_collections" */ './routes/settings/collections.vue');
 const SettingsFields = () =>
@@ -172,6 +174,10 @@ const router = new Router({
 		{
 			path: '/:project/settings/global',
 			component: SettingsGlobal
+		},
+		{
+			path: '/:project/settings/default',
+			component: SettingsDefault
 		},
 		{
 			path: '/:project/settings/collections',
