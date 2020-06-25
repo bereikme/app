@@ -12,6 +12,14 @@
 						:to="`/${currentProjectKey}/settings/global`"
 						icon="public"
 					/>
+					
+					<v-card
+						:title="$t('settings_default')"
+						:subtitle="$tc('item_count', globalNum, { count: globalNum })"
+						element="li"
+						:to="`/${currentProjectKey}/settings/default`"
+						icon="public"
+					/>
 
 					<v-card
 						:title="$t('settings_collections_fields')"

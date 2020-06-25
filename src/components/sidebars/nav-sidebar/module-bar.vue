@@ -185,7 +185,7 @@ export default {
 			}
 
 			modules.push({
-				link: 'https://docs.directus.io',
+				link: `/${this.currentProjectKey}/collections/help`,
 				name: this.$t('help_and_docs'),
 				icon: 'help'
 			});
