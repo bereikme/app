@@ -171,6 +171,10 @@ const router = new Router({
 			alias: '/:project/activity/:primaryKey'
 		},
 		{
+			path: '/:project/dashboard',
+			component: Dashboard
+		},
+		{
 			path: '/:project/settings',
 			component: Settings
 		},
