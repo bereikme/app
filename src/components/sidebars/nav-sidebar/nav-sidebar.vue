@@ -3,7 +3,7 @@
 		<v-blocker v-show="active" class="blocker" :z-index="2" @click="disableNav" />
 		<transition name="nav">
 			<aside :class="{ active }">
-				<button class="a11y-close" @click="disableNav">Close nav</button>
+	 			<button class="a11y-close" @click="disableNav">Close nav</button>
 
 				<module-bar />
 

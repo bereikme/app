@@ -13,7 +13,7 @@
 				class="public-note selectable"
 				v-html="project_public_note"
 			/>
-		</div>
+		</div> 
 	</div>
 </template>
 

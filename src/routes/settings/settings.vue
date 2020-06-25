@@ -111,7 +111,7 @@ export default {
 				.getItems('directus_roles', {
 					fields: '-',
 					limit: 0,
-					meta: 'total_count'
+					meta: 'total_count' 
 				})
 				.then(res => res.meta)
 				.then(({ total_count }) => {
