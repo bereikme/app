@@ -152,16 +152,11 @@ export default {
 
 		getDefaultModules() {
 			const modules = [];
-			
-			
-			const moduleExtensions = this.$store.state.extensions.modules;
 
-			forEach(moduleExtensions, (info, key) => {
-				modules.push({
-					link: `/${this.currentProjectKey}/collections/${key}`,
-					name: info.name,
-					icon: info.icon
-				});
+			modules.push({
+				link: `/${this.currentProjectKey}/collections`,
+				name: this.$tc('collection', 2),
+				icon: 'box'
 			});
 
 			if (
@@ -184,11 +179,20 @@ export default {
 			}
 
 			modules.push({
-				link: 'https://docs.worksdomain.nl',
+				link: 'https://docs.directus.io',
 				name: this.$t('help_and_docs'),
 				icon: 'help'
 			});
 
+			const moduleExtensions = this.$store.state.extensions.modules;
+
+			forEach(moduleExtensions, (info, key) => {
+				modules.push({
+					link: `/${this.currentProjectKey}/ext/${key}`,
+					name: info.name,
+					icon: info.icon
+				});
+			});
 
 			return modules;
 		}
