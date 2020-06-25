@@ -1,8 +1,8 @@
 <template>
 	<div class="settings">
-		<v-header :breadcrumb="links" icon="home" dashboard /> 
+		<v-header :breadcrumb="links" icon="settings" settings /> 
 
-		<v-details :title="$t('dashboard_news')" type="break" open>
+		<v-details :title="$t('settings_project')" type="break" open>
 			<nav>
 				<ul>
 					<v-card
@@ -45,49 +45,6 @@
 						element="li"
 						:to="`/${currentProjectKey}/settings/webhooks`"
 						icon="send"
-					/>
-				</ul>
-			</nav>
-		</v-details>
-		
-		<v-details :title="$t('dashboard_news')" type="break" open>
-			<nav>
-				<ul>
-					
-					<p>Hier komt nog een mooie tekst te staan</p>
-					
-					<v-card
-						:title="$t('dashboard_view_orders')"
-						:subtitle="$tc('item_count', globalNum, { count: globalNum })"
-						element="li"
-						:to="`/${currentProjectKey}/collections/orders`"
-						icon="view_list"
-					/>
-					
-					<v-card
-						:title="$t('dashboard_view_invoices')"
-						:subtitle="$tc('item_count', globalNum, { count: globalNum })"
-						element="li"
-						:to="`/${currentProjectKey}/collections/invoices`"
-						icon="euro_symbol"
-					/>
-					
-					<v-card
-						:title="$t('dashboard_view_balance')"
-						:subtitle="$tc('item_count', globalNum, { count: globalNum })"
-						element="li"
-						:to="`/${currentProjectKey}/collections/balance`"
-						icon="euro_symbol"
-					/>
-
-					<v-card
-						:title="$t('dashboard_add_funds')"
-						:subtitle="
-							$tc('collection_count', collectionsNum, { count: collectionsNum })
-						"
-						element="li"
-						:to="`/${currentProjectKey}/topup`"
-						icon="box"
 					/>
 				</ul>
 			</nav>
