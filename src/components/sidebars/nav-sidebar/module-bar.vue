@@ -154,6 +154,12 @@ export default {
 			const modules = [];
 
 			modules.push({
+				link: `/${this.currentProjectKey}/dashboard`,
+				name: this.$t('dashboard'),
+				icon: 'home'
+			});
+
+			modules.push({
 				link: `/${this.currentProjectKey}/collections/shop`,
 				name: this.$t('shop'),
 				icon: 'person'
