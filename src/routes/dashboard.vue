@@ -14,49 +14,79 @@
 					/>
 					
 					<v-card
-						:title="$t('dashboard_news')"
+						:title="$t('dashboard_how_to_start')"
 					element="li"
 						:to="`/${currentProjectKey}/settings/default`"
 						icon="public"
 					/>
 
 					<v-card
-						:title="$t('dashboard_open_tickets')"
+						:title="$t('settings_collections_fields')"
 					
 						element="li"
 						:to="`/${currentProjectKey}/settings/collections`"
 						icon="box"
 					/>
 
+					<v-card
+						:title="$t('settings_permissions')"
+						:subtitle="roleCount"
+						element="li"
+						:to="`/${currentProjectKey}/settings/roles`"
+						icon="group"
+					/>
+
+					<v-card
+						:title="$t('settings_webhooks')"
+						:subtitle="webhookCount"
+						element="li"
+						:to="`/${currentProjectKey}/settings/webhooks`"
+						icon="send"
+					/>
 				</ul>
 			</nav>
 		</v-details>
 		
-		<v-details :title="$t('settings_project')">
+		<v-details :title="$t('settings_project')" type="break" open>
 			<nav>
 				<ul>
 					<v-card
-						:title="$t('dashboard_view_orders')"
+						:title="$t('dashboard_how_to_start')"
 						element="li"
-						:to="`/${currentProjectKey}/collections/orders`"
-						icon="view_list"
+						:to="`/${currentProjectKey}/settings/global`"
+						icon="public"
 					/>
 					
 					<v-card
-						:title="$t('dashboard_view_invoices')"
+						:title="$t('dashboard_how_to_start')"
 					element="li"
-						:to="`/${currentProjectKey}/collections/invoices`"
-						icon="euro_symbol"
+						:to="`/${currentProjectKey}/settings/default`"
+						icon="public"
 					/>
 
 					<v-card
-						:title="$t('dashboard_view_balance')"
+						:title="$t('settings_collections_fields')"
 					
 						element="li"
-						:to="`/${currentProjectKey}/balance/`"
+						:to="`/${currentProjectKey}/settings/collections`"
 						icon="box"
 					/>
 
+					<v-card
+						:title="$t('settings_permissions')"
+						:subtitle="roleCount"
+						element="li"
+						:to="`/${currentProjectKey}/settings/roles`"
+						icon="group"
+					/>
+
+					<v-card
+						:title="$t('settings_webhooks')"
+						:subtitle="webhookCount"
+						element="li"
+						:to="`/${currentProjectKey}/settings/webhooks`"
+						icon="send"
+					/>
 				</ul>
 			</nav>
 		</v-details>
@@ -158,6 +188,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.settings-global {
+	padding: var(--page-padding-top) var(--page-padding) var(--page-padding-bottom);
+}
 
 .settings {
 	padding: var(--page-padding-top) var(--page-padding) var(--page-padding-bottom);
