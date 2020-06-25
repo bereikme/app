@@ -2,7 +2,7 @@
 	<div class="settings-global">
 		<v-header :breadcrumb="links" :icon-link="`/${currentProjectKey}/settings`" settings>
 			<template slot="buttons">
-				<v-header-button
+				<v-header-button 
 					:disabled="!editing"
 					:loading="saving"
 					:label="$t('save')"

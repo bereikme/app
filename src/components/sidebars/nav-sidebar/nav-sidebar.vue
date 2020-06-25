@@ -8,7 +8,7 @@
 				<module-bar />
 
 				<section class="main-bar">
-					<project-switcher />
+				 	<project-switcher />
 
 					<nav-menu
 						v-if="customCollections === null"

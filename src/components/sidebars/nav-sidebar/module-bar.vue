@@ -153,13 +153,7 @@ export default {
 		getDefaultModules() {
 			const modules = [];
 
-			modules.push({
-				link: `/${this.currentProjectKey}/collections`,
-				name: this.$tc('collection', 2),
-				icon: 'box'
-			});
-
-			if (
+						if (
 				this.permissions.directus_users.read !== 'none' ||
 				this.permissions.directus_users.read !== 'mine'
 			) {
