@@ -153,14 +153,10 @@ export default {
 		getDefaultModules() {
 			const modules = [];
 
-			const moduleExtensions = this.$store.state.extensions.modules;
-
-			forEach(moduleExtensions, (info, key) => {
-				modules.push({
-					link: `/${this.currentProjectKey}/ext/${key}`,
-					name: info.name,
-					icon: info.icon
-				});
+			modules.push({
+				link: `/${this.currentProjectKey}/collections`,
+				name: this.$tc('collection', 2),
+				icon: 'box'
 			});
 
 			if (
@@ -182,18 +178,20 @@ export default {
 				});
 			}
 
+			modules.push({
+				link: 'https://docs.directus.io',
+				name: this.$t('help_and_docs'),
+				icon: 'help'
+			});
+
+			const moduleExtensions = this.$store.state.extensions.modules;
+
 			forEach(moduleExtensions, (info, key) => {
 				modules.push({
-					link: `/${this.currentProjectKey}/collections/${key}`,
+					link: `/${this.currentProjectKey}/ext/${key}`,
 					name: info.name,
 					icon: info.icon
 				});
-			});
-
-			modules.push({
-				link: 'https://docs.worksdomain.nl',
-				name: this.$t('help_and_docs'),
-				icon: 'help'
 			});
 
 			return modules;
@@ -210,7 +208,7 @@ export default {
 	fill: var(--module-text-color-active) !important;
 }
 </style>
- 
+
 <style lang="scss" scoped>
 .module-bar {
 	width: 64px;

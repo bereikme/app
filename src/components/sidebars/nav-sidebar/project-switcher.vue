@@ -20,6 +20,26 @@
 					{{ currentProjectKey }}
 				</template>
 			</span>
+			<v-icon v-if="projects.length > 1" class="chevron" name="expand_more" />
+			<select v-if="projects.length > 1" v-model="currentProjectKey">
+				<option
+					v-for="project in projects"
+					:key="project.key"
+					:name="project.key"
+					:value="project.key"
+					:selected="currentProjectKey === project.key"
+				>
+					<template v-if="project.status === 'successful'">
+						{{ project.data.project_name }}
+						<template v-if="project.data.authenticated === true">
+							&#8226;
+						</template>
+					</template>
+					<template v-else>
+						{{ project.key }}
+					</template>
+				</option>
+			</select>
 		</div>
 	</div>
 </template>
@@ -56,7 +76,8 @@ export default {
 				latency = this.$n(latency);
 			}
 
-			let content = content += '<br>';
+			let content = this.apiURL;
+			content += '<br>';
 			content += this.$t('latency') + ':';
 			content += ` ${latency}ms`;
 

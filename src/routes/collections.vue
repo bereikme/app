@@ -3,6 +3,7 @@
 		<v-header
 			:breadcrumb="[
 				{
+					name: $tc('collection', 2),
 					path: `/${currentProjectKey}/collections`
 				}
 			]"

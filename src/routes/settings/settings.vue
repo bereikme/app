@@ -42,7 +42,7 @@
 			</nav>
 		</v-details>
 
-		<!--<v-details :title="$t('additional_info')" type="break" open>
+		<v-details :title="$t('additional_info')" type="break" open>
 			<nav>
 				<ul>
 					<v-card
@@ -88,7 +88,43 @@
 					/>
 				</ul>
 			</nav>
-		</v-details>-->
+		</v-details>
+		<v-details :title="$t('coming_soon')" type="break" open>
+			<nav>
+				<ul>
+					<v-card
+						:title="$t('connection')"
+						:subtitle="
+							`${$t('latency')}: ${$n(
+								Math.round(
+									$store.state.latency[$store.state.latency.length - 1].latency
+								)
+							)}ms`
+						"
+						disabled
+						element="li"
+					>
+						<v-signal slot="icon" class="signal" />
+					</v-card>
+
+					<v-card
+						:title="$t('server_details')"
+						disabled
+						:subtitle="projectName"
+						element="li"
+						icon="storage"
+					/>
+
+					<v-card
+						:title="$t('version_and_updates')"
+						disabled
+						:subtitle="version"
+						element="li"
+						icon="update"
+					/>
+				</ul>
+			</nav>
+		</v-details>
 
 		<v-info-sidebar wide>
 			<span class="type-note">No settings</span>
