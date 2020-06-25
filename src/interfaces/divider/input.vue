@@ -94,7 +94,7 @@ export default {
 		border-bottom: 2px solid var(--input-border-color);
 	}
 }
-
+ 
 .warning-style {
 	padding-top: 12px;
 	&.margin {

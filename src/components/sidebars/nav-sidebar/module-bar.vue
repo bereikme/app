@@ -210,7 +210,7 @@ export default {
 	fill: var(--module-text-color-active) !important;
 }
 </style>
-
+ 
 <style lang="scss" scoped>
 .module-bar {
 	width: 64px;

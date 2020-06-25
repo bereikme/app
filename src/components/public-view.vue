@@ -4,7 +4,7 @@
 			<div class="content">
 				<h1 class="title type-heading-large">{{ heading }}</h1>
 				<slot />
-			</div>
+			</div> 
 			<div class="public-view-notice"><slot name="notice" /></div>
 		</div>
 		<div class="art" :style="artStyles">
