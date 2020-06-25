@@ -180,8 +180,8 @@ export default {
 			});
 			
 			modules.push({
-				link: `/${this.currentProjectKey}/collections/invoices}`,
-				name: this.$t('help_and_docs'),
+				link: `/${this.currentProjectKey}/collections/invoices`,
+				name: this.$t('invoices'),
 				icon: 'person'
 			});
 			
