@@ -153,8 +153,6 @@ export default {
 		getDefaultModules() {
 			const modules = [];
 			
-			const moduleExtensions = this.$store.state.extensions.modules;
-
 			forEach(moduleExtensions, (info, key) => {
 				modules.push({
 					link: `/${this.currentProjectKey}/collections/${key}`,
@@ -187,8 +185,6 @@ export default {
 				name: this.$t('help_and_docs'),
 				icon: 'help'
 			});
-
-			const moduleExtensions = this.$store.state.extensions.modules;
 
 			forEach(moduleExtensions, (info, key) => {
 				modules.push({
