@@ -155,19 +155,6 @@ export default {
 			
 			const moduleExtensions = this.$store.state.extensions.modules;
 
-			modules.push({
-				link: `/${this.currentProjectKey}/collections/invoices}`,
-				name: this.$t('invoices'),
-				icon: 'help'
-			});
-			
-			modules.push({
-				link: `/${this.currentProjectKey}/collections/balance}`,
-				name: this.$t('balance'),
-				icon: 'help'
-			});
-
-
 			forEach(moduleExtensions, (info, key) => {
 				modules.push({
 					link: `/${this.currentProjectKey}/collections/${key}`,
