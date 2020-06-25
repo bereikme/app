@@ -14,35 +14,49 @@
 					/>
 					
 					<v-card
-						:title="$t('dashboard_how_to_start')"
+						:title="$t('dashboard_news')"
 					element="li"
 						:to="`/${currentProjectKey}/settings/default`"
 						icon="public"
 					/>
 
 					<v-card
-						:title="$t('settings_collections_fields')"
+						:title="$t('dashboard_open_tickets')"
 					
 						element="li"
 						:to="`/${currentProjectKey}/settings/collections`"
 						icon="box"
 					/>
 
+				</ul>
+			</nav>
+		</v-details>
+		
+		<v-details :title="$t('settings_project')">
+			<nav>
+				<ul>
 					<v-card
-						:title="$t('settings_permissions')"
-						:subtitle="roleCount"
+						:title="$t('dashboard_view_orders')"
 						element="li"
-						:to="`/${currentProjectKey}/settings/roles`"
-						icon="group"
+						:to="`/${currentProjectKey}/collections/orders`"
+						icon="view_list"
+					/>
+					
+					<v-card
+						:title="$t('dashboard_view_invoices')"
+					element="li"
+						:to="`/${currentProjectKey}/collections/invoices`"
+						icon="euro_symbol"
 					/>
 
 					<v-card
-						:title="$t('settings_webhooks')"
-						:subtitle="webhookCount"
+						:title="$t('dashboard_view_balance')"
+					
 						element="li"
-						:to="`/${currentProjectKey}/settings/webhooks`"
-						icon="send"
+						:to="`/${currentProjectKey}/balance/`"
+						icon="box"
 					/>
+
 				</ul>
 			</nav>
 		</v-details>
