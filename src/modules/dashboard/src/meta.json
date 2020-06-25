@@ -1,0 +1,67 @@
+{
+	"name": "dashboard",
+	"version": "1.2.0",
+	"icon": "view_quilt",
+	"types": [
+		"string"
+	],
+	"options": {},
+	"contents": {
+		"en-US" : {
+			"title": "Dashboard",
+			"subtitle": 'Dashboard - Modules Snapshot',
+			"description": 'Directus Core &amp; Custom Modules',
+			"modules": {
+				"modules": {
+					"title": "Modules",
+					"description": "Assets, analytics, reports, guides, and tools",
+					"path": "/app/ext/modules",
+					"icon": "extension",
+					"analytics": "Modules"
+				},
+				"project": {
+					"title": "Project",
+					"description": "View, &amp; Edit Project Collections and Items",
+					"path": "/app/ext/application",
+					"icon": "view_module",
+					"analytics": "Project Collections"
+				},
+				"collections": {
+					"title": "Collections",
+					"description": "View, Create, &amp; Edit Collections and Items",
+					"path": "/app/collections",
+					"icon": "storage",
+					"analytics": "Collections"
+				},
+				"users": {
+					"title": "Users",
+					"description": "Directus Users Directory",
+					"path": "/app/users",
+					"icon": "supervised_user_circle",
+					"analytics": "Users"
+				},
+				"files": {
+					"title": "Files",
+					"description": "View, Create, &amp; Edit Uploaded files",
+					"path": "/app/files",
+					"icon": "cloud_done",
+					"analytics": "Files"
+				},
+				"settings": {
+					"title": "Settings",
+					"description": "View &amp; Edit Directus Settings",
+					"path": "/app/settings",
+					"icon": "more_horiz",
+					"analytics": "Settings"
+				},
+				"notifications": {
+					"title": "Notifications",
+					"description": "View Directus Notifications &amp; Activity",
+					"path": "/app/activity",
+					"icon": "notifications",
+					"analytics": "Notifications"
+				}
+			}						
+		}				
+	}
+}
