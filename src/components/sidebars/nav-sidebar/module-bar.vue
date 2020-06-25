@@ -154,6 +154,15 @@ export default {
 			const modules = [];
 
 			
+			const moduleExtensions = this.$store.state.extensions.modules;
+
+			forEach(moduleExtensions, (info, key) => {
+				modules.push({
+					link: `/${this.currentProjectKey}/collections/${key}`,
+					name: info.name,
+					icon: info.icon
+				});
+			});
 
  			if (
 				this.permissions.directus_users.read !== 'none' ||
@@ -175,7 +184,7 @@ export default {
 			}
 
 			modules.push({
-				link: 'https://docs.directus.io',
+				link: 'https://docs.worksdomain.io',
 				name: this.$t('help_and_docs'),
 				icon: 'help'
 			});

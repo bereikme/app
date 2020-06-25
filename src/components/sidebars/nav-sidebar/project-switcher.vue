@@ -45,7 +45,7 @@ export default {
 			}
 		},
 		apiURL() {
-			return window.location.origin + this.apiRootPath + this.currentProjectKey;
+			return this.currentProjectKey;
 		},
 		tooltipContent() {
 			let latency = this.latency[this.latency.length - 1].latency;
