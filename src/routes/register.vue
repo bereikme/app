@@ -1,5 +1,5 @@
 <template>
-	<PublicView wide :heading="$t('create_project')">
+	<PublicView wide :heading="$t('create_new_account')">
 		<public-stepper class="stepper" :steps="5" :current-step="step" />
 
 		<div v-show="step === 1" class="step-1">
@@ -187,6 +187,16 @@
 				</div>
 			</div>
 		</div>
+
+		<public-notice
+			v-if="notice.text"
+			slot="notice"
+			:loading="false"
+			:color="notice.color"
+			:icon="notice.icon"
+		>
+			{{ notice.text }}
+		</public-notice>
 	</PublicView>
 </template>
 
@@ -216,6 +226,11 @@ export default {
 			user_email: '',
 			user_password: '',
 			db_host: 'localhost',
+			notice: {
+				text: this.$t('already_have_an_account'),
+				color: 'blue-grey-100',
+				icon: 'outlined_flag'
+			},
 			db_port: 3306,
 			db_user: '',
 			db_password: '',
@@ -293,7 +308,7 @@ export default {
 					this.super_admin_token = this.generateMasterPassword();
 				}
 
-				await axios.post(this.apiRootPath + 'server/projects', {
+				await axios.post(this.apiRootPath + 'server/xx', {
 					project_name,
 					project,
 					user_email,
