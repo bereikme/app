@@ -16,6 +16,14 @@
 				<div class="field-grid">
 					<div class="field">
 						<h2 class="type-title">{{ $t('create_new_project') }}</h2>
+						<p>{{ $t('create_new_project_copy') }}</p>
+						<input
+							v-model="super_admin_token"
+							v-focus
+							placeholder="Super-Admin Password..."
+							type="check"
+							required
+						/>
 					</div>
 				</div>
 				<button type="button" @click="step = 2">{{ $t('next') }}</button>

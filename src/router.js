@@ -242,7 +242,7 @@ const router = new Router({
 		},
 		{
 			path: '/register',
-			component: Install,
+			component: Register,
 			meta: {
 				publicRoute: true
 			}
