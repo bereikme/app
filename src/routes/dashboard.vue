@@ -13,50 +13,6 @@
 				/>
 			</template>
 		</v-header>
-		
-		<v-details :title="$t('settings_project')" type="break" open>
-			<nav>
-				<ul>
-					<v-card
-						:title="$t('settings_global')"
-						element="li"
-						:to="`/${currentProjectKey}/settings/global`"
-						icon="public"
-					/>
-					
-					<v-card
-						:title="$t('settings_default')"
-					element="li"
-						:to="`/${currentProjectKey}/settings/default`"
-						icon="public"
-					/>
-
-					<v-card
-						:title="$t('settings_collections_fields')"
-					
-						element="li"
-						:to="`/${currentProjectKey}/settings/collections`"
-						icon="box"
-					/>
-
-					<v-card
-						:title="$t('settings_permissions')"
-						:subtitle="roleCount"
-						element="li"
-						:to="`/${currentProjectKey}/settings/roles`"
-						icon="group"
-					/>
-
-					<v-card
-						:title="$t('settings_webhooks')"
-						:subtitle="webhookCount"
-						element="li"
-						:to="`/${currentProjectKey}/settings/webhooks`"
-						icon="send"
-					/>
-				</ul>
-			</nav>
-		</v-details>
 
 		<v-form
 			:fields="fields"
@@ -157,24 +113,5 @@ export default {
 <style lang="scss" scoped>
 .settings-global {
 	padding: var(--page-padding-top) var(--page-padding) var(--page-padding-bottom);
-}
-
-.settings {
-	padding: var(--page-padding-top) var(--page-padding) var(--page-padding-bottom);
-}
-
-nav ul {
-	padding: 0;
-	display: grid;
-	grid-template-columns: repeat(auto-fill, var(--card-size));
-	grid-gap: var(--card-horizontal-gap);
-
-	li {
-		display: block;
-	}
-}
-
-.signal {
-	fill: var(--white);
 }
 </style>

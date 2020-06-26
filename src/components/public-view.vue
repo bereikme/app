@@ -9,8 +9,8 @@
 		</div>
 		<div class="art" :style="artStyles">
 			<img
-				class="logo"
-				src="https://i.pinimg.com/originals/13/48/8c/13488c4947ea22e3038bef82046b4b70.jpg"
+				class="background-right"
+				src="http://www.seekgif.com/uploads/green-blurry-background-0.jpg"
 			/>
 			<div
 				v-if="project_public_note"
@@ -140,10 +140,9 @@ export default {
 	justify-content: center;
 	align-items: center;
 
-	.logo {
+	.background-right {
 		width: 100%;
-		max-width: 340px;
-		height: auto;
+		height: 100%
 	}
 
 	.public-note {
