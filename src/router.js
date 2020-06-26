@@ -12,7 +12,6 @@ import Items from './routes/items.vue';
 import FileLibrary from './routes/file-library.vue';
 import Item from './routes/item.vue';
 import Login from './routes/login.vue';
-import Register from './routes/register.vue';
 
 const Setup2FA = () => import(/* webpackChunkName: "setup-2fa" */ './routes/setup-2fa.vue');
 const ResetPassword = () =>
@@ -228,13 +227,6 @@ const router = new Router({
 			}
 		},
 		{
-			path: '/register',
-			component: Install,
-			meta: {
-				publicRoute: true
-			}
-		},
-		{
 			path: '/reset-password',
 			component: ResetPassword,
 			meta: {
@@ -243,6 +235,13 @@ const router = new Router({
 		},
 		{
 			path: '/install',
+			component: Install,
+			meta: {
+				publicRoute: true
+			}
+		},
+		{
+			path: '/register',
 			component: Install,
 			meta: {
 				publicRoute: true
