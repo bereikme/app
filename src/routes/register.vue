@@ -30,61 +30,8 @@
 		</div>
 
 		<div v-show="step === 2" class="step-2">
+			<install-requirements v-if="step === 2" :super-admin-token="super_admin_token" />z
 			<div class="buttons">
-			
-				<legend class="type-title">{{ $t('project_info') }}</legend>
-				<div class="field-grid">
-					<div class="field">
-						<label class="type-label" for="project_name">
-							{{ $t('project_name') }}
-						</label>
-						<input
-							id="project_name"
-							v-model="project_name"
-							v-focus
-							name="project_name"
-							type="text"
-							required
-							@input="syncKey"
-						/>
-					</div>
-					<div class="field">
-						<label class="type-label" for="project">{{ $t('project_key') }}</label>
-						<input
-							id="project"
-							:value="project"
-							name="project"
-							type="text"
-							required
-							pattern="^[0-9a-z_-]+$"
-							@input="setProjectKey"
-						/>
-					</div>
-					<div class="field">
-						<label class="type-label" for="user_email">{{ $t('admin_email') }}</label>
-						<input
-							id="user_email"
-							v-model="user_email"
-							name="user_email"
-							type="email"
-							required
-						/>
-					</div>
-					<div class="field">
-						<label class="type-label" for="user_password">
-							{{ $t('admin_password') }}
-						</label>
-						<input
-							id="user_password"
-							v-model="user_password"
-							class="password"
-							name="user_password"
-							type="text"
-							required
-						/>
-					</div>
-				</div>
-			
 				<span class="secondary" @click="step--">{{ $t('back') }}</span>
 				<button type="button" @click="step = 3">{{ $t('next') }}</button>
 			</div>
@@ -261,13 +208,15 @@ import { mapState, mapActions } from 'vuex';
 import PublicStepper from '@/components/public/stepper';
 import slug from 'slug';
 import shortid from 'shortid';
+import InstallRequirements from '@/components/install/requirements';
 
 export default {
 	name: 'Install',
 	components: {
 		PublicView,
 		PublicNotice,
-		PublicStepper
+		PublicStepper,
+		InstallRequirements
 	},
 	data() {
 		return {
@@ -399,6 +348,11 @@ export default {
 			if (this.manualKey === false) this.manualKey = true;
 			const value = slug(event.target.value, { lower: true });
 			this.project = value;
+		},
+		async goToLogin() {
+			await this.getProjects(true);
+
+			this.$router.push('/login', { query: { project: this.project } });
 		}
 	}
 };
