@@ -21,8 +21,7 @@
 							v-model="super_admin_token"
 							v-focus
 							placeholder="Super-Admin Password..."
-							type="check"
-							required
+							type="text"
 						/>
 					</div>
 				</div>
@@ -32,6 +31,60 @@
 
 		<div v-show="step === 2" class="step-2">
 			<div class="buttons">
+			
+				<legend class="type-title">{{ $t('project_info') }}</legend>
+				<div class="field-grid">
+					<div class="field">
+						<label class="type-label" for="project_name">
+							{{ $t('project_name') }}
+						</label>
+						<input
+							id="project_name"
+							v-model="project_name"
+							v-focus
+							name="project_name"
+							type="text"
+							required
+							@input="syncKey"
+						/>
+					</div>
+					<div class="field">
+						<label class="type-label" for="project">{{ $t('project_key') }}</label>
+						<input
+							id="project"
+							:value="project"
+							name="project"
+							type="text"
+							required
+							pattern="^[0-9a-z_-]+$"
+							@input="setProjectKey"
+						/>
+					</div>
+					<div class="field">
+						<label class="type-label" for="user_email">{{ $t('admin_email') }}</label>
+						<input
+							id="user_email"
+							v-model="user_email"
+							name="user_email"
+							type="email"
+							required
+						/>
+					</div>
+					<div class="field">
+						<label class="type-label" for="user_password">
+							{{ $t('admin_password') }}
+						</label>
+						<input
+							id="user_password"
+							v-model="user_password"
+							class="password"
+							name="user_password"
+							type="text"
+							required
+						/>
+					</div>
+				</div>
+			
 				<span class="secondary" @click="step--">{{ $t('back') }}</span>
 				<button type="button" @click="step = 3">{{ $t('next') }}</button>
 			</div>
