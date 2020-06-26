@@ -1,77 +1,197 @@
 <template>
-	<PublicView :heading="signingIn || fetchingData ? $t('signing_in') : $t('sign_in')">
-		<form @submit.prevent="onSubmit">
-			<project-chooser v-if="(signingIn || fetchingData) === false" />
+	<PublicView wide :heading="$t('create_project')">
+		<public-stepper class="stepper" :steps="5" :current-step="step" />
 
-			<template v-if="signingIn || fetchingData">
-				<v-progress-linear rounded indeterminate />
-				<p>{{ currentProject.project_name }}</p>
-			</template>
-
-			<!-- the getProjects action will set the currentProject on load. When currentProject doesn't exist
-        it means that the store doesn't have any projects that can be used loaded-->
-			<template v-else-if="!currentProject">
-				<v-notice icon="info" color="warning">{{ $t('no_public_projects') }}</v-notice>
-			</template>
-
-			<template v-else-if="currentProject.status === 'failed'">
-				Something is wrong with this project
-				<!-- TODO: use v-error here -->
-				<v-notice icon="error" color="danger">{{ readableError }}</v-notice>
-			</template>
-
-			<template v-else-if="needs2fa === true">
-				<p>{{ $t('enter_otp') }}</p>
-				<otp-input @input="onOTPInput" />
-			</template>
-
-			<template v-else>
-				<div
-					v-if="
-						currentProject.status === 'successful' &&
-							currentProject.data.authenticated === true
-					"
-				>
-					<v-spinner v-if="firstName === null" />
-					<p v-else v-html="$t('continue_as', { name: firstName + ' ' + lastName })" />
-					<div class="buttons">
-						<button type="button" class="secondary" @click="logout">
-							{{ $t('sign_out') }}
-						</button>
-						<button type="submit">{{ $t('continue') }}</button>
+		<div v-show="step === 1" class="step-1">
+			<template v-if="firstInstall">
+				<div class="field-grid">
+					<div class="field">
+						<h2 class="type-title">{{ $t('welcome_to_directus') }}</h2>
+						<p>{{ $t('welcome_to_directus_copy') }}</p>
 					</div>
 				</div>
-				<template v-else>
-					<input
-						v-model="email"
-						v-focus
-						type="email"
-						:placeholder="$t('email')"
-						required
-						autocomplete="username"
-					/>
-					<input
-						ref="password"
-						v-model="password"
-						type="password"
-						:placeholder="$t('password')"
-						autocomplete="current-password"
-						required
-					/>
-					<div class="buttons">
-						<button type="submit">{{ $t('sign_in') }}</button>
-						<router-link class="secondary" to="/reset-password">
-							{{ $t('forgot_password') }}
-						</router-link>
-					</div>
-					<sso :providers="ssoProviders" />
-				</template>
+				<button type="button" @click="step = 2">{{ $t('next') }}</button>
 			</template>
+			<template v-else class="field-grid">
+				<div class="field-grid">
+					<div class="field">
+						<h2 class="type-title">{{ $t('create_new_project') }}</h2>
+						<p>{{ $t('create_new_project_copy') }}</p>
+						<input
+							v-model="super_admin_token"
+							v-focus
+							placeholder="Super-Admin Password..."
+							type="text"
+						/>
+					</div>
+				</div>
+				<button type="button" @click="step = 2">{{ $t('next') }}</button>
+			</template>
+		</div>
+
+		<div v-show="step === 2" class="step-2">
+			<install-requirements v-if="step === 2" :super-admin-token="super_admin_token" />
+			<div class="buttons">
+				<span class="secondary" @click="step--">{{ $t('back') }}</span>
+				<button type="button" @click="step = 3">{{ $t('next') }}</button>
+			</div>
+		</div>
+
+		<form v-show="step === 3" class="step-3" @submit.prevent="step = 4">
+			<fieldset>
+				<legend class="type-title">{{ $t('project_info') }}</legend>
+				<div class="field-grid">
+					<div class="field">
+						<label class="type-label" for="project_name">
+							{{ $t('project_name') }}
+						</label>
+						<input
+							id="project_name"
+							v-model="project_name"
+							v-focus
+							name="project_name"
+							type="text"
+							required
+							@input="syncKey"
+						/>
+					</div>
+					<div class="field">
+						<label class="type-label" for="project">{{ $t('project_key') }}</label>
+						<input
+							id="project"
+							:value="project"
+							name="project"
+							type="text"
+							required
+							pattern="^[0-9a-z_-]+$"
+							@input="setProjectKey"
+						/>
+					</div>
+					<div class="field">
+						<label class="type-label" for="user_email">{{ $t('admin_email') }}</label>
+						<input
+							id="user_email"
+							v-model="user_email"
+							name="user_email"
+							type="email"
+							required
+						/>
+					</div>
+					<div class="field">
+						<label class="type-label" for="user_password">
+							{{ $t('admin_password') }}
+						</label>
+						<input
+							id="user_password"
+							v-model="user_password"
+							class="password"
+							name="user_password"
+							type="text"
+							required
+						/>
+					</div>
+				</div>
+
+				<div class="buttons">
+					<span class="secondary" @click="step--">{{ $t('back') }}</span>
+					<button type="submit">{{ $t('next') }}</button>
+				</div>
+			</fieldset>
 		</form>
+
+		<form v-show="step === 4" class="step-4" @submit.prevent="onSubmit">
+			<fieldset>
+				<legend class="type-title">{{ $t('database_connection') }}</legend>
+				<div class="field-grid">
+					<div class="field">
+						<label class="type-label" for="db_host">{{ $t('host') }}</label>
+						<input
+							id="db_host"
+							v-model="db_host"
+							v-focus
+							name="db_host"
+							type="text"
+							required
+						/>
+					</div>
+					<div class="field">
+						<label class="type-label" for="db_port">{{ $t('port') }}</label>
+						<input
+							id="db_port"
+							v-model="db_port"
+							name="db_port"
+							type="number"
+							required
+						/>
+					</div>
+					<div class="field">
+						<label class="type-label" for="db_user">{{ $t('db_user') }}</label>
+						<input id="db_user" v-model="db_user" name="db_user" type="text" required />
+					</div>
+					<div class="field">
+						<label class="type-label" for="db_password">{{ $t('db_password') }}</label>
+						<input
+							id="db_password"
+							v-model="db_password"
+							class="password"
+							name="db_password"
+							type="password"
+						/>
+					</div>
+					<div class="field">
+						<label class="type-label" for="db_name">{{ $t('db_name') }}</label>
+						<input id="db_name" v-model="db_name" name="db_name" type="text" required />
+					</div>
+					<div class="field">
+						<label class="type-label" for="db_type">{{ $t('db_type') }}</label>
+						<div class="select">
+							<input id="db_type" name="db_type" type="text" value="MySQL" disabled />
+						</div>
+					</div>
+				</div>
+
+				<div class="buttons">
+					<span class="secondary" @click="step--">{{ $t('back') }}</span>
+					<button type="submit">{{ $t('install') }}</button>
+				</div>
+			</fieldset>
+		</form>
+
+		<div v-show="step === 5" class="step-5">
+			<h2 class="type-title">{{ $t('wrapping_up') }}</h2>
+			<div class="field-grid">
+				<div class="field">
+					<v-progress-linear class="progress-bar" rounded indeterminate />
+					<p>
+						{{ $t('install_busy_copy') }}
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<div v-show="step === 6" class="step-6">
+			<h2 class="type-title">{{ $t('all_set') }}</h2>
+			<div class="field-grid">
+				<div class="field">
+					<v-progress-linear class="progress-bar" :value="100" rounded />
+					<p>
+						{{ $t('install_all_set_copy') }}
+						<span v-if="firstInstall" class="warning">
+							{{ $t('install_all_set_super_admin_password') }}
+						</span>
+					</p>
+					<input v-if="firstInstall" v-model="super_admin_token" type="text" readonly />
+					<button type="button" class="button" @click="goToLogin">
+						{{ $t('sign_in') }}
+					</button>
+				</div>
+			</div>
+		</div>
+
 		<public-notice
 			v-if="notice.text"
 			slot="notice"
-			:loading="signingIn || fetchingData"
+			:loading="false"
 			:color="notice.color"
 			:icon="notice.icon"
 		>
@@ -83,264 +203,166 @@
 <script>
 import PublicView from '@/components/public-view';
 import PublicNotice from '@/components/public/notice';
-import Sso from '@/components/public/sso';
-import ProjectChooser from '@/components/public/project-chooser';
-import { mapState, mapGetters, mapMutations } from 'vuex';
-import { UPDATE_PROJECT } from '@/store/mutation-types';
-import hydrateStore from '@/hydrate';
-import OtpInput from '@/components/public/otp-input';
-import { clone } from 'lodash';
+import axios from 'axios';
+import { mapState, mapActions } from 'vuex';
+import PublicStepper from '@/components/public/stepper';
+import slug from 'slug';
+import shortid from 'shortid';
+import InstallRequirements from '@/components/install/requirements';
 
 export default {
-	name: 'Login',
+	name: 'Install',
 	components: {
 		PublicView,
 		PublicNotice,
-		ProjectChooser,
-		Sso,
-		OtpInput
+		PublicStepper,
+		InstallRequirements
 	},
 	data() {
 		return {
-			email: '',
-			password: '',
-			otp: '',
-			signingIn: false,
-			fetchingData: false,
+			step: 1,
+			project_name: '',
+			project: '',
+			user_email: '',
+			user_password: '',
+			db_host: 'localhost',
 			notice: {
-				text: this.$t('not_authenticated'),
+				text: this.$t('project_not_configured'),
 				color: 'blue-grey-100',
-				icon: 'lock_outline'
+				icon: 'outlined_flag'
 			},
-			firstName: null,
-			lastName: null,
-			ssoProviders: [],
-			needs2fa: false
+			db_port: 3306,
+			db_user: '',
+			db_password: '',
+			db_name: '',
+			installing: false,
+			error: null,
+			manualKey: false,
+			super_admin_token: '',
+			adminTokenValid: false,
+			fetchingRequirements: false
 		};
 	},
 	computed: {
-		...mapGetters(['currentProject']),
-		...mapState(['currentProjectKey', 'apiRootPath', 'projects']),
-		readableError() {
-			if (this.currentProject?.status !== 'failed') return null;
-			return (
-				this.currentProject.error.response?.data?.error?.message ||
-				this.currentProject.error.message
-			);
+		...mapState(['apiRootPath', 'projects']),
+		firstInstall() {
+			return this.projects === false;
 		}
-	},
-	watch: {
-		currentProject: {
-			deep: true,
-			handler() {
-				this.handleLoad();
-			}
-		}
-	},
-	created() {
-		this.handleLoad();
-		this.checkForErrorQueryParam();
 	},
 	methods: {
-		...mapMutations([UPDATE_PROJECT]),
-		onSubmit() {
-			if (this.currentProject?.data?.authenticated) {
-				return this.enterApp();
-			} else {
-				return this.login();
+		...mapActions(['getProjects']),
+		generateMasterPassword() {
+			const sections = 2;
+			let password = '';
+			for (let i = 0; i <= sections; i++) {
+				password += shortid.generate();
 			}
+			return password;
 		},
-		login() {
-			const { email, password } = this;
-			this.signingIn = true;
-
-			this.notice = {
-				text: this.$t('signing_in'),
-				color: 'blue-grey',
-				icon: null
-			};
-
-			const credentials = {
-				project: this.currentProjectKey,
-				email,
-				password,
-				mode: 'cookie'
-			};
-
-			if (this.otp && this.otp.length === 6) {
-				credentials.otp = this.otp;
+		async onSubmit() {
+			// When you hit enter on the first page, we don't want to submit the install data, instead
+			// we go to the second page
+			if (this.step === 3) {
+				this.step = 4;
+				return;
 			}
 
-			this.$api
-				.login(credentials)
-				.then(async response => {
-					// There's one specific case where we expect a successful response (200) to contain an error: 2FA
-					// When 2FA is required but not enabled for the current user, they can
-					// still log in, but the token will only work for /users/me
-					if (response.error) {
-						throw {
-							info: {
-								code: response.error.code
-							}
-						};
-					}
+			this.step = 5;
 
-					const { data: projectInfo } = await this.$api.api.get('/');
-					const { requires2FA, version, database } = projectInfo.api;
-					const { max_upload_size } = projectInfo.server;
-
-					this[UPDATE_PROJECT]({
-						key: this.currentProjectKey,
-						data: {
-							authenticated: true,
-							requires2FA,
-							version,
-							database,
-							max_upload_size
-						}
-					});
-
-					this.enterApp();
-
-					this.signingIn = false;
-				})
-				.catch(response => {
-					this.signingIn = false;
-					const code = response.info?.code;
-
-					if (code === 111) {
-						this.needs2fa = true;
-
-						this.notice = {
-							text: this.$t(`errors.${code}`),
-							color: 'blue-grey-100',
-							icon: 'lock_outline'
-						};
-					} else if (code === 113) {
-						this.$router.push('/setup-2fa');
-					} else if (code === 100) {
-						this.notice = {
-							text: this.$t(`errors.${code}`),
-							color: 'warning',
-							icon: 'warning'
-						};
-
-						this.$nextTick(() => {
-							this.$refs.password.select();
-						});
-					} else if (code) {
-						this.notice = {
-							text: this.$t(`errors.${code}`),
-							color: 'warning',
-							icon: 'warning'
-						};
-					} else {
-						this.notice = {
-							text: this.$t(`errors.-1`),
-							color: 'danger',
-							icon: 'error_outline'
-						};
-					}
+			// We want the install to at least take 3 seconds before being done, to make the user feel like
+			// the installer is actually doing things. This will make sure 3 seconds have passed before we
+			// go to the confirmation of done.
+			const next = () => {
+				this.$notify({
+					title: this.$t('api_installed'),
+					color: 'green',
+					iconMain: 'check'
 				});
-		},
-		async logout() {
-			await this.$api.logout();
-			this.$store.commit(UPDATE_PROJECT, {
-				key: this.$store.state.currentProjectKey,
-				data: {
-					authenticated: false
-				}
-			});
-		},
-		async enterApp() {
-			this.notice = {
-				text: this.$t('fetching_data')
+
+				this.step = 6;
 			};
 
-			this.fetchingData = true;
+			let installReady = false;
+			let timeReady = false;
 
-			// This will fetch all the needed information about the project in order to run Directus
-			await hydrateStore();
+			setTimeout(() => {
+				timeReady = true;
 
-			// Default to /collections as homepage
-			let route = `/${this.currentProjectKey}/collections`;
+				if (installReady && timeReady) next();
+			}, 4000);
 
-			// If the last visited page is saved in the current user record, use that
-			if (this.$store.state.currentUser.last_page) {
-				route = this.$store.state.currentUser.last_page;
-			}
+			const {
+				project_name,
+				project,
+				user_email,
+				user_password,
+				db_host,
+				db_port,
+				db_user,
+				db_password,
+				db_name
+			} = this;
 
-			// In the case the URL contains a redirect query, use that instead
-			if (this.$route.query.redirect) {
-				route = this.$route.query.redirect;
-			}
-
-			this.$router.push(route, () => {
-				// We only set the fetchingData flag to false when the page navigation is done
-				// This makes sure we don't show a flash of "authenticated" style login view
-				this.fetchingData = false;
-			});
-		},
-		async fetchAuthenticatedUser() {
-			if (!this.currentProject) return;
-			this.firstName = null;
-			this.lastName = null;
-			const { data } = await this.$api.getMe({ fields: ['first_name', 'last_name'] });
-			this.firstName = data.first_name;
-			this.lastName = data.last_name;
-		},
-		async fetchSSOProviders() {
-			if (!this.currentProject) return;
-			this.ssoProviders = [];
-			const { data } = await this.$api.getThirdPartyAuthProviders();
-			this.ssoProviders = data;
-		},
-		onOTPInput(value) {
-			this.otp = value;
-			this.login();
-		},
-		checkForErrorQueryParam() {
-			if (this.$route.query.error) {
-				this.notice = {
-					text: this.$t(`errors.${this.$route.query.code}`),
-					color: 'danger',
-					icon: 'error'
-				};
-
-				// Remove query params
-				const query = clone(this.$route.query);
-				delete query.error;
-				delete query.code;
-				this.$router.replace({ query });
-			}
-		},
-		handleLoad() {
-			if (this.currentProject?.status === 'successful') {
-				if (this.currentProject?.data?.authenticated === true) {
-					this.fetchAuthenticatedUser();
-				} else {
-					this.fetchSSOProviders();
+			try {
+				if (this.firstInstall === true) {
+					this.super_admin_token = this.generateMasterPassword();
 				}
+
+				await axios.post(this.apiRootPath + 'server/projects', {
+					project_name,
+					project,
+					user_email,
+					user_password,
+					db_host,
+					db_port,
+					db_user,
+					db_password,
+					db_name,
+					super_admin_token: this.super_admin_token
+				});
+
+				installReady = true;
+
+				if (installReady && timeReady) {
+					next();
+				}
+			} catch (error) {
+				this.error = error;
+
+				console.error(error);
+
+				this.$events.emit('error', {
+					notify: error.response?.data?.error?.message,
+					error
+				});
+
+				this.step = 4;
 			}
+		},
+		syncKey() {
+			if (this.manualKey === false) {
+				this.project = slug(this.project_name, { lower: true });
+			}
+		},
+		setProjectKey(event) {
+			if (this.manualKey === false) this.manualKey = true;
+			const value = slug(event.target.value, { lower: true });
+			this.project = value;
+		},
+		async goToLogin() {
+			await this.getProjects(true);
+
+			this.$router.push('/login', { query: { project: this.project } });
 		}
 	}
 };
 </script>
 
 <style lang="scss" scoped>
-// TODO: These styles should be extraced into their base components
-//       They're currently duplicated on forgot-password, setup-2fa, and install
-//       as well
-form {
-	margin-top: 32px;
-
-	@media (min-height: 800px) {
-		margin-top: 52px;
-	}
-}
+// NOTE: These button and input styles are copied from login.vue and should be extracted to a base component
 
 .button,
-button:not(.secondary) {
+button {
 	position: relative;
 	background-color: var(--button-primary-background-color);
 	border: 2px solid var(--button-primary-background-color);
@@ -384,16 +406,15 @@ button:not(.secondary) {
 	}
 }
 
-p {
-	font-size: 16px;
-	line-height: 26px;
-	margin-top: 32px;
-	margin-bottom: 32px;
-	color: var(--blue-grey-300);
-
-	::v-deep b {
-		font-weight: var(--weight-bold);
-		color: var(--page-text-color);
+.select {
+	position: relative;
+	&:after {
+		content: 'arrow_drop_down';
+		font-family: var(--family-icon);
+		position: absolute;
+		right: 12px;
+		top: 8px;
+		color: var(--input-icon-color);
 	}
 }
 
@@ -403,64 +424,128 @@ input {
 	margin-bottom: 32px;
 	border: 0;
 	font-size: 16px;
-	border: 2px solid var(--input-border-color);
+	border: var(--input-border-width) solid var(--input-border-color);
 	width: 100%;
+	height: 64px;
 	padding: 20px 10px;
-	color: var(--input-text-color);
+	background-color: var(--input-background-color);
+	color: var(--darker-gray);
 	transition: border-color var(--fast) var(--transition);
 	border-radius: var(--border-radius);
+	font-family: var(--family-monospace);
 
 	&::placeholder {
-		color: var(--input-placeholder-color);
+		color: var(--light-gray);
 	}
 
 	&:-webkit-autofill {
-		color: var(--input-text-color) !important;
-		-webkit-text-fill-color: var(--input-text-color);
+		color: var(--darker-gray) !important;
+		-webkit-text-fill-color: var(--darker-gray);
 		-webkit-box-shadow: 0 0 0px 1000px var(--white) inset;
 	}
 
 	&:hover:not([disabled]) {
 		transition: none;
-		border-color: var(--input-border-color-hover);
+		border-color: var(--gray);
 		&:focus {
-			border-color: var(--input-border-color-focus);
+			border-color: var(--darker-gray);
 		}
 	}
 
 	&[disabled] {
 		cursor: not-allowed;
+		background-color: var(--input-background-color-disabled);
 	}
 
 	&:focus {
 		outline: 0;
-		border-color: var(--input-border-color-focus);
+		border-color: var(--darker-gray);
 
 		&:-webkit-autofill {
-			color: var(--input-text-color) !important;
-			-webkit-text-fill-color: var(--input-text-color);
+			color: var(--darker-gray) !important;
+			-webkit-text-fill-color: var(--darker-gray);
 			-webkit-box-shadow: 0 0 0px 1000px var(--white) inset;
 		}
 	}
 }
 
+///////////////////////////////////
+
 .buttons {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	margin-top: 8px;
-
+	margin-top: 16px;
 	.secondary {
 		transition: color var(--fast) var(--transition);
-		flex-shrink: 0;
-		// margin-left: 24px; // Not when on left ("continue as")
 		text-decoration: none;
-		font-size: 16px;
-		cursor: pointer;
 		color: var(--input-placeholder-color);
+		cursor: pointer;
+		font-size: 16px;
 		&:hover {
 			color: var(--page-text-color);
 		}
 	}
+}
+
+p {
+	font-size: 16px;
+	line-height: 26px;
+	margin-top: 32px;
+	margin-bottom: 32px;
+	color: var(--blue-grey-300);
+}
+
+.stepper {
+	margin-top: 4px;
+
+	@media (min-height: 800px) {
+		margin-top: 24px;
+	}
+}
+
+legend {
+	margin-bottom: 20px;
+}
+
+.stepper {
+	margin-bottom: 64px;
+	max-width: 320px;
+}
+
+.progress-bar {
+	margin-top: 32px;
+}
+
+.progress-bar-complete {
+	margin-top: 32px;
+	width: 100%;
+	background-color: var(--progress-background-color-accent);
+	position: relative;
+	height: 4px;
+	border-radius: var(--border-radius);
+}
+
+.warning {
+	color: var(--warning);
+}
+
+.field-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-gap: 8px 32px;
+}
+
+label {
+	margin-bottom: 8px;
+}
+
+// There is no way to currently disable the browser from offering to save the password. We do not want the user to be
+// bothered by the browser asking to save the database password. This is the only way to hack around it. By using text
+// instead of password for type, we can trick the browser into thinking this is in fact not a password 🤦
+.password {
+	-moz-text-security: disc;
+	-webkit-text-security: disc;
+	text-security: disc;
 }
 </style>
