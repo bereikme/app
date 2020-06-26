@@ -17,7 +17,6 @@ const Setup2FA = () => import(/* webpackChunkName: "setup-2fa" */ './routes/setu
 const ResetPassword = () =>
 	import(/* webpackChunkName: "reset-password" */ './routes/reset-password.vue');
 const Install = () => import(/* webpackChunkName: "install" */ './routes/install.vue');
-const Register = () => import(/* webpackChunkName: "register" */ './routes/register.vue');
 const NotFound = () => import(/* webpackChunkName: "not-found" */ './routes/not-found.vue');
 const Interfaces = () =>
 	import(/* webpackChunkName: "settings_interfaces" */ './routes/settings/interfaces.vue');
@@ -236,13 +235,6 @@ const router = new Router({
 		{
 			path: '/install',
 			component: Install,
-			meta: {
-				publicRoute: true
-			}
-		},
-		{
-			path: '/register',
-			component: Register,
 			meta: {
 				publicRoute: true
 			}
