@@ -6,8 +6,8 @@
 			<template v-if="firstInstall">
 				<div class="field-grid">
 					<div class="field">
-						<h2 class="type-title">{{ $t('welcome_to_directus') }}</h2>
-						<p>{{ $t('welcome_to_directus_copy') }}</p>
+						<h2 class="type-title">{{ $t('create_new_account') }}</h2>
+						<p>{{ $t('create_new_account_decription') }}</p>
 					</div>
 				</div>
 				<button type="button" @click="step = 2">{{ $t('next') }}</button>
@@ -15,14 +15,14 @@
 			<template v-else class="field-grid">
 				<div class="field-grid">
 					<div class="field">
-						<h2 class="type-title">{{ $t('create_new_project') }}</h2>
-						<p>{{ $t('create_new_project_copy') }}</p>
-						/*<input
+						<h2 class="type-title">{{ $t('create_new_account') }}</h2>
+						<p>{{ $t('create_new_account_decription') }}</p>
+						<input
 							v-model="super_admin_token"
 							v-focus
 							placeholder="Super-Admin Password..."
 							type="checkbox"
-						/>*/
+						/>
 					</div>
 				</div>
 				<button type="button" @click="step = 2">{{ $t('next') }}</button>
