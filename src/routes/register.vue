@@ -30,7 +30,6 @@
 		</div>
 
 		<div v-show="step === 2" class="step-2">
-			<install-requirements v-if="step === 2" :super-admin-token="super_admin_token" />
 			<div class="buttons">
 				<span class="secondary" @click="step--">{{ $t('back') }}</span>
 				<button type="button" @click="step = 3">{{ $t('next') }}</button>
@@ -208,15 +207,13 @@ import { mapState, mapActions } from 'vuex';
 import PublicStepper from '@/components/public/stepper';
 import slug from 'slug';
 import shortid from 'shortid';
-import InstallRequirements from '@/components/install/requirements';
 
 export default {
 	name: 'Install',
 	components: {
 		PublicView,
 		PublicNotice,
-		PublicStepper,
-		InstallRequirements
+		PublicStepper
 	},
 	data() {
 		return {
