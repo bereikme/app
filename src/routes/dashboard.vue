@@ -6,7 +6,7 @@
 					:disabled="!editing"
 					:loading="saving"
 					:label="$t('save')"
-					icon="check" 
+					icon="check"  
 					background-color="button-primary-background-color"
 					icon-color="button-primary-text-color"
 					@click="save('leave')"
