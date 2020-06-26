@@ -12,13 +12,13 @@ import Items from './routes/items.vue';
 import FileLibrary from './routes/file-library.vue';
 import Item from './routes/item.vue';
 import Login from './routes/login.vue';
-import Register from './routes/install.vue';
+import Register from './routes/register.vue';
 
 const Setup2FA = () => import(/* webpackChunkName: "setup-2fa" */ './routes/setup-2fa.vue');
 const ResetPassword = () =>
 	import(/* webpackChunkName: "reset-password" */ './routes/reset-password.vue');
 const Install = () => import(/* webpackChunkName: "install" */ './routes/install.vue');
-const Register = () => import(/* webpackChunkName: "register" */ './routes/install.vue');
+const Register = () => import(/* webpackChunkName: "register" */ './routes/register.vue');
 const NotFound = () => import(/* webpackChunkName: "not-found" */ './routes/not-found.vue');
 const Interfaces = () =>
 	import(/* webpackChunkName: "settings_interfaces" */ './routes/settings/interfaces.vue');
