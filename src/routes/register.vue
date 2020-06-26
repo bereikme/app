@@ -346,11 +346,6 @@ export default {
 			if (this.manualKey === false) this.manualKey = true;
 			const value = slug(event.target.value, { lower: true });
 			this.project = value;
-		},
-		async goToLogin() {
-			await this.getProjects(true);
-
-			this.$router.push('/login', { query: { project: this.project } });
 		}
 	}
 };
