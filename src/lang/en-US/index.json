@@ -126,6 +126,8 @@
   "created_by": "Created By",
   "owner": "Owner",
   "created_on": "Created On",
+  "create_new_account": "Create a New Account",
+  "create_new_account_description": "Create a New Account and start using Vueworks within minutes",
   "create_new_project": "Create New Project",
   "create_new_project_copy": "Make sure you have your database information handy, then enter your API's Super-Admin password to continue.",
   "creating_item": "Creating Item",
