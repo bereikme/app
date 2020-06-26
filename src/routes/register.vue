@@ -187,16 +187,6 @@
 				</div>
 			</div>
 		</div>
-
-		<public-notice
-			v-if="notice.text"
-			slot="notice"
-			:loading="false"
-			:color="notice.color"
-			:icon="notice.icon"
-		>
-			{{ notice.text }}
-		</public-notice>
 	</PublicView>
 </template>
 
@@ -226,11 +216,6 @@ export default {
 			user_email: '',
 			user_password: '',
 			db_host: 'localhost',
-			notice: {
-				text: this.$t('project_not_configured'),
-				color: 'blue-grey-100',
-				icon: 'outlined_flag'
-			},
 			db_port: 3306,
 			db_user: '',
 			db_password: '',
