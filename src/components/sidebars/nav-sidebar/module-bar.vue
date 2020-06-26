@@ -195,7 +195,8 @@ export default {
 				name: this.$t('help_and_docs'),
 				icon: 'help'
 			});
-						
+			
+			/*
 			const moduleExtensions = this.$store.state.extensions.modules;
 
 			forEach(moduleExtensions, (info, key) => {
@@ -205,7 +206,7 @@ export default {
 					icon: info.icon
 				});
 			});
-
+			*/
 			return modules;
 		}
 	}
