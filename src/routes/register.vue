@@ -17,12 +17,12 @@
 					<div class="field">
 						<h2 class="type-title">{{ $t('create_new_project') }}</h2>
 						<p>{{ $t('create_new_project_copy') }}</p>
-						<input
+						/*<input
 							v-model="super_admin_token"
 							v-focus
 							placeholder="Super-Admin Password..."
-							type="text"
-						/>
+							type="checkbox"
+						/>*/
 					</div>
 				</div>
 				<button type="button" @click="step = 2">{{ $t('next') }}</button>
@@ -30,7 +30,7 @@
 		</div>
 
 		<div v-show="step === 2" class="step-2">
-			<install-requirements v-if="step === 2" :super-admin-token="super_admin_token" />z
+			//<install-requirements v-if="step === 2" :super-admin-token="1" />
 			<div class="buttons">
 				<span class="secondary" @click="step--">{{ $t('back') }}</span>
 				<button type="button" @click="step = 3">{{ $t('next') }}</button>
@@ -208,15 +208,15 @@ import { mapState, mapActions } from 'vuex';
 import PublicStepper from '@/components/public/stepper';
 import slug from 'slug';
 import shortid from 'shortid';
-import InstallRequirements from '@/components/install/requirements';
+//import InstallRequirements from '@/components/install/requirements';
 
 export default {
 	name: 'Install',
 	components: {
 		PublicView,
 		PublicNotice,
-		PublicStepper,
-		InstallRequirements
+		PublicStepper
+		//InstallRequirements
 	},
 	data() {
 		return {
@@ -239,8 +239,8 @@ export default {
 			error: null,
 			manualKey: false,
 			super_admin_token: '',
-			adminTokenValid: false,
-			fetchingRequirements: false
+			adminTokenValid: false
+			//fetchingRequirements: false
 		};
 	},
 	computed: {
