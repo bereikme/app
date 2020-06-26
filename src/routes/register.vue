@@ -1,6 +1,6 @@
 <template>
 	<PublicView wide :heading="$t('create_new_account')">
-		<public-stepper class="stepper" :steps="5" :current-step="step" />
+		<public-stepper class="stepper" :steps="4" :current-step="step" />
 
 		<div v-show="step === 1" class="step-1">
 			<template v-if="firstInstall">
@@ -25,7 +25,7 @@
 						/>
 					</div>
 				</div>
-				<button type="button" @click="step = 2">{{ $t('next') }}</button>
+				<button type="button" @click="step = 2">{{ $t('i_have_read_and_agree') }}</button>
 			</template>
 		</div>
 
@@ -99,65 +99,7 @@
 			</fieldset>
 		</form>
 
-		<form v-show="step === 4" class="step-4" @submit.prevent="onSubmit">
-			<fieldset>
-				<legend class="type-title">{{ $t('database_connection') }}</legend>
-				<div class="field-grid">
-					<div class="field">
-						<label class="type-label" for="db_host">{{ $t('host') }}</label>
-						<input
-							id="db_host"
-							v-model="db_host"
-							v-focus
-							name="db_host"
-							type="text"
-							required
-						/>
-					</div>
-					<div class="field">
-						<label class="type-label" for="db_port">{{ $t('port') }}</label>
-						<input
-							id="db_port"
-							v-model="db_port"
-							name="db_port"
-							type="number"
-							required
-						/>
-					</div>
-					<div class="field">
-						<label class="type-label" for="db_user">{{ $t('db_user') }}</label>
-						<input id="db_user" v-model="db_user" name="db_user" type="text" required />
-					</div>
-					<div class="field">
-						<label class="type-label" for="db_password">{{ $t('db_password') }}</label>
-						<input
-							id="db_password"
-							v-model="db_password"
-							class="password"
-							name="db_password"
-							type="password"
-						/>
-					</div>
-					<div class="field">
-						<label class="type-label" for="db_name">{{ $t('db_name') }}</label>
-						<input id="db_name" v-model="db_name" name="db_name" type="text" required />
-					</div>
-					<div class="field">
-						<label class="type-label" for="db_type">{{ $t('db_type') }}</label>
-						<div class="select">
-							<input id="db_type" name="db_type" type="text" value="MySQL" disabled />
-						</div>
-					</div>
-				</div>
-
-				<div class="buttons">
-					<span class="secondary" @click="step--">{{ $t('back') }}</span>
-					<button type="submit">{{ $t('install') }}</button>
-				</div>
-			</fieldset>
-		</form>
-
-		<div v-show="step === 5" class="step-5">
+		<div v-show="step === 4" class="step-4">
 			<h2 class="type-title">{{ $t('wrapping_up') }}</h2>
 			<div class="field-grid">
 				<div class="field">
@@ -169,7 +111,7 @@
 			</div>
 		</div>
 
-		<div v-show="step === 6" class="step-6">
+		<div v-show="step === 5" class="step-5">
 			<h2 class="type-title">{{ $t('all_set') }}</h2>
 			<div class="field-grid">
 				<div class="field">
@@ -225,16 +167,11 @@ export default {
 			project: '',
 			user_email: '',
 			user_password: '',
-			db_host: 'localhost',
 			notice: {
 				text: this.$t('already_have_an_account'),
 				color: 'blue-grey-100',
 				icon: 'outlined_flag'
 			},
-			db_port: 3306,
-			db_user: '',
-			db_password: '',
-			db_name: '',
 			installing: false,
 			error: null,
 			manualKey: false,
@@ -279,7 +216,7 @@ export default {
 					iconMain: 'check'
 				});
 
-				this.step = 6;
+				this.step = 5;
 			};
 
 			let installReady = false;
@@ -295,12 +232,7 @@ export default {
 				project_name,
 				project,
 				user_email,
-				user_password,
-				db_host,
-				db_port,
-				db_user,
-				db_password,
-				db_name
+				user_password
 			} = this;
 
 			try {
@@ -313,11 +245,6 @@ export default {
 					project,
 					user_email,
 					user_password,
-					db_host,
-					db_port,
-					db_user,
-					db_password,
-					db_name,
 					super_admin_token: this.super_admin_token
 				});
 
