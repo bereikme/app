@@ -1,6 +1,6 @@
 <template>
 	<PublicView wide :heading="$t('create_new_account')">
-		<public-stepper class="stepper" :steps="4" :current-step="step" />
+		<public-stepper class="stepper" :steps="3" :current-step="step" />
 
 		<div v-show="step === 1" class="step-1">
 			<template v-if="firstInstall">
@@ -29,21 +29,13 @@
 			</template>
 		</div>
 
-		<div v-show="step === 2" class="step-2">
-			//<install-requirements v-if="step === 2" :super-admin-token="1" />
-			<div class="buttons">
-				<span class="secondary" @click="step--">{{ $t('back') }}</span>
-				<button type="button" @click="step = 3">{{ $t('next') }}</button>
-			</div>
-		</div>
-
-		<form v-show="step === 3" class="step-3" @submit.prevent="step = 4">
+		<form v-show="step === 2" class="step-2" @submit.prevent="step = 3">
 			<fieldset>
 				<legend class="type-title">{{ $t('project_info') }}</legend>
 				<div class="field-grid">
 					<div class="field">
 						<label class="type-label" for="project_name">
-							{{ $t('project_name') }}
+							{{ $t('first_name') }}
 						</label>
 						<input
 							id="project_name"
@@ -56,7 +48,7 @@
 						/>
 					</div>
 					<div class="field">
-						<label class="type-label" for="project">{{ $t('project_key') }}</label>
+						<label class="type-label" for="project">{{ $t('last_name') }}</label>
 						<input
 							id="project"
 							:value="project"
@@ -68,7 +60,7 @@
 						/>
 					</div>
 					<div class="field">
-						<label class="type-label" for="user_email">{{ $t('admin_email') }}</label>
+						<label class="type-label" for="user_email">{{ $t('user_email') }}</label>
 						<input
 							id="user_email"
 							v-model="user_email"
@@ -79,7 +71,7 @@
 					</div>
 					<div class="field">
 						<label class="type-label" for="user_password">
-							{{ $t('admin_password') }}
+							{{ $t('user_password') }}
 						</label>
 						<input
 							id="user_password"
@@ -99,19 +91,7 @@
 			</fieldset>
 		</form>
 
-		<div v-show="step === 4" class="step-4">
-			<h2 class="type-title">{{ $t('wrapping_up') }}</h2>
-			<div class="field-grid">
-				<div class="field">
-					<v-progress-linear class="progress-bar" rounded indeterminate />
-					<p>
-						{{ $t('install_busy_copy') }}
-					</p>
-				</div>
-			</div>
-		</div>
-
-		<div v-show="step === 5" class="step-5">
+		<div v-show="step === 3" class="step-3">
 			<h2 class="type-title">{{ $t('all_set') }}</h2>
 			<div class="field-grid">
 				<div class="field">
@@ -199,12 +179,12 @@ export default {
 		async onSubmit() {
 			// When you hit enter on the first page, we don't want to submit the install data, instead
 			// we go to the second page
-			if (this.step === 3) {
-				this.step = 4;
+			if (this.step === 2) {
+				this.step = 3;
 				return;
 			}
 
-			this.step = 5;
+			this.step = 4;
 
 			// We want the install to at least take 3 seconds before being done, to make the user feel like
 			// the installer is actually doing things. This will make sure 3 seconds have passed before we
@@ -216,7 +196,7 @@ export default {
 					iconMain: 'check'
 				});
 
-				this.step = 5;
+				this.step = 3;
 			};
 
 			let installReady = false;
@@ -263,7 +243,7 @@ export default {
 					error
 				});
 
-				this.step = 4;
+				this.step = 3;
 			}
 		},
 		syncKey() {
