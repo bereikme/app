@@ -55,7 +55,6 @@
 							name="last_name"
 							type="text"
 							required
-						//	pattern="^[0-9a-z_-]+$"
 						/>
 					</div>
 					<div class="field">
