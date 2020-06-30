@@ -31,17 +31,17 @@
 
 		<form v-show="step === 2" class="step-2" @submit.prevent="step = 3">
 			<fieldset>
-				<legend class="type-title">{{ $t('project_info') }}</legend>
+				<legend class="type-title">{{ $t('fill_in_your_personal_details') }}</legend>
 				<div class="field-grid">
 					<div class="field">
-						<label class="type-label" for="project_name">
+						<label class="type-label" for="first_name">
 							{{ $t('first_name') }}
 						</label>
 						<input
-							id="project_name"
-							v-model="project_name"
+							id="first_name"
+							v-model="first_name"
 							v-focus
-							name="project_name"
+							name="first_name"
 							type="text"
 							required
 							@input="syncKey"
@@ -50,9 +50,9 @@
 					<div class="field">
 						<label class="type-label" for="project">{{ $t('last_name') }}</label>
 						<input
-							id="project"
-							:value="project"
-							name="project"
+							id="last_name"
+							:value="last_name"
+							name="last_name"
 							type="text"
 							required
 							pattern="^[0-9a-z_-]+$"
@@ -97,12 +97,8 @@
 				<div class="field">
 					<v-progress-linear class="progress-bar" :value="100" rounded />
 					<p>
-						{{ $t('install_all_set_copy') }}
-						<span v-if="firstInstall" class="warning">
-							{{ $t('install_all_set_super_admin_password') }}
-						</span>
+						{{ $t('account_created') }}
 					</p>
-					<input v-if="firstInstall" v-model="super_admin_token" type="text" readonly />
 					<button type="button" class="button" @click="goToLogin">
 						{{ $t('sign_in') }}
 					</button>
@@ -160,22 +156,8 @@ export default {
 			//fetchingRequirements: false
 		};
 	},
-	computed: {
-		...mapState(['apiRootPath', 'projects']),
-		firstInstall() {
-			return this.projects === false;
-		}
-	},
 	methods: {
 		...mapActions(['getProjects']),
-		generateMasterPassword() {
-			const sections = 2;
-			let password = '';
-			for (let i = 0; i <= sections; i++) {
-				password += shortid.generate();
-			}
-			return password;
-		},
 		async onSubmit() {
 			// When you hit enter on the first page, we don't want to submit the install data, instead
 			// we go to the second page
@@ -189,43 +171,21 @@ export default {
 			// We want the install to at least take 3 seconds before being done, to make the user feel like
 			// the installer is actually doing things. This will make sure 3 seconds have passed before we
 			// go to the confirmation of done.
-			const next = () => {
-				this.$notify({
-					title: this.$t('api_installed'),
-					color: 'green',
-					iconMain: 'check'
-				});
-
-				this.step = 3;
-			};
-
-			let installReady = false;
-			let timeReady = false;
-
-			setTimeout(() => {
-				timeReady = true;
-
-				if (installReady && timeReady) next();
-			}, 4000);
 
 			const {
-				project_name,
-				project,
+				first_name,
+				last_name,
 				user_email,
 				user_password
 			} = this;
 
 			try {
-				if (this.firstInstall === true) {
-					this.super_admin_token = this.generateMasterPassword();
-				}
-
-				await axios.post(this.apiRootPath + 'server/xx', {
-					project_name,
-					project,
+				
+				await axios.post(this.apiRootPath + 'server/users', {
+					first_name,
+					last_name,
 					user_email,
 					user_password,
-					super_admin_token: this.super_admin_token
 				});
 
 				installReady = true;
