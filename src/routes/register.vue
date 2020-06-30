@@ -44,19 +44,18 @@
 							name="first_name"
 							type="text"
 							required
-							@input="syncKey"
 						/>
 					</div>
 					<div class="field">
 						<label class="type-label" for="project">{{ $t('last_name') }}</label>
 						<input
 							id="last_name"
-							:value="last_name"
+							v-model="last_name"	
+							v-focus							
 							name="last_name"
 							type="text"
 							required
-							pattern="^[0-9a-z_-]+$"
-							@input="setProjectKey"
+						//	pattern="^[0-9a-z_-]+$"
 						/>
 					</div>
 					<div class="field">
@@ -139,8 +138,8 @@ export default {
 	data() {
 		return {
 			step: 1,
-			project_name: '',
-			project: '',
+			first_name: '',
+			last_name: '',
 			user_email: '',
 			user_password: '',
 			notice: {
@@ -205,16 +204,6 @@ export default {
 
 				this.step = 3;
 			}
-		},
-		syncKey() {
-			if (this.manualKey === false) {
-				this.project = slug(this.project_name, { lower: true });
-			}
-		},
-		setProjectKey(event) {
-			if (this.manualKey === false) this.manualKey = true;
-			const value = slug(event.target.value, { lower: true });
-			this.project = value;
 		},
 		async goToLogin() {
 			await this.getProjects(true);
