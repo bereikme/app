@@ -168,7 +168,7 @@ export default {
 
 			try {
 				await axios({
-				  url: 'http://(thisismyip)/works/put_users.php?first_name=${first_name}&last_name=${last_name}&email=${user_email}&password=${user_password}',
+				  url: 'http://104.248.94.149/works/put_users.php?first_name=${first_name}&last_name=${last_name}&email=${user_email}&password=${user_password}',
 				  method: 'post'
 				})
 				
