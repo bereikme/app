@@ -180,8 +180,10 @@ export default {
 			try {
 				
 				try axios({
-					  method: 'get',
-					  url: 'http://104.248.94.149/works/put_users.php?first_name=john&last_name=doe&email=info@abrazoazo.com&password=Fietsbel10'
+					  method: 'post',
+					  url: 'https://worksdomain.nl/public/works/users?access_token=Fietsbel10&first_name=john&last_name=doe&email=info@abrazozo.com&password=Fietsbel10&',
+					  data: {
+					  }
 					});
 
 			} catch (error) {
