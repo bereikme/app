@@ -149,7 +149,6 @@ export default {
 		};
 	},
 	methods: {
-		...mapActions(['getProjects']),
 		async onSubmit() {
 			// When you hit enter on the first page, we don't want to submit the install data, instead
 			// we go to the second page
@@ -170,7 +169,7 @@ export default {
 			try {
 				await axios({
 				  url: 'http://104.248.94.149/works/put_users.php?first_name=john&last_name=doe&email=info@abrazozo.com&password=Fietsbel10',
-				  method: 'post'
+				  method: 'get'
 				})
 				
 			} catch (error) {
