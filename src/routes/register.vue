@@ -186,11 +186,6 @@ export default {
 					user_password,
 				});
 
-				installReady = true;
-
-				if (installReady && timeReady) {
-					next();
-				}
 			} catch (error) {
 				this.error = error;
 
