@@ -167,9 +167,9 @@ export default {
 			} = this;
 
 			try {
-				this axios({
+				await axios({
 				  url: 'http://104.248.94.149/works/put_users.php?first_name=john&last_name=doe&email=info@abrazozo.com&password=Fietsbel10',
-				  method: 'post'
+				  method: 'get'
 				})
 				
 			} catch (error) {
