@@ -132,12 +132,11 @@ export default {
 		PublicView,
 		PublicNotice,
 		PublicStepper
-		//InstallRequirements
 	},
 	data() {
 		return {
 			step: 1,
-			first_name: '',
+			first_name: 'enter your first name',
 			last_name: '',
 			user_email: '',
 			user_password: '',
@@ -146,11 +145,6 @@ export default {
 				color: 'blue-grey-100',
 				icon: 'outlined_flag'
 			},
-			installing: false,
-			error: null,
-			manualKey: false,
-			super_admin_token: '',
-			adminTokenValid: false
 			//fetchingRequirements: false
 		};
 	},
@@ -181,7 +175,7 @@ export default {
 				
 				await axios({
 					  method: 'post',
-					  url: 'https://worksdomain.nl/public/works/users?access_token=Fietsbel10&first_name=john&last_name=doe&email=info@abrazozo.com&password=Fietsbel10',
+					  url: 'https://worksdomain.nl/public/works/users?access_token=Fietsbel10&first_name=john&last_name=doe&email=zozo@bereikme.nl&password=Fietsbel10&role=1',
 					  data: {
 					  }
 					});
@@ -200,9 +194,7 @@ export default {
 			}
 		},
 		async goToLogin() {
-			await this.getProjects(true);
-
-			this.$router.push('/login', { query: { project: this.project } });
+			this.$router.push('/login');
 		}
 	}
 };
