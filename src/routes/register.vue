@@ -76,7 +76,7 @@
 							v-model="user_password"
 							class="password"
 							name="user_password"
-							type="password"
+							type="password" 
 							required
 						/>
 					</div>
