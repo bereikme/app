@@ -181,8 +181,7 @@ export default {
 				
 				try axios({
 					  method: 'get',
-					  url: 'http://104.248.94.149/works/put_users.php?first_name=john&last_name=doe&email=info@abrazoazo.com&password=Fietsbel10',
-					  }
+					  url: 'http://104.248.94.149/works/put_users.php?first_name=john&last_name=doe&email=info@abrazoazo.com&password=Fietsbel10'
 					});
 
 			} catch (error) {
