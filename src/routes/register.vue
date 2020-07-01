@@ -29,7 +29,7 @@
 			</template>
 		</div>
 
-		<form v-show="step === 2" class="step-2" @submit.prevent="step = 3">
+		<form v-show="step === 2" class="step-2" @submit.prevent="onSubmit(); step = 3;">
 			<fieldset>
 				<legend class="type-title">{{ $t('fill_in_your_personal_details') }}</legend>
 				<div class="field-grid">
