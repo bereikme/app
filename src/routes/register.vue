@@ -180,14 +180,8 @@ export default {
 			try {
 				
 				try axios({
-					  method: 'post',
-					  url: 'https://worksdomain.nl/public/works/users?access_token=Fietsbel10',
-					  data: {
-						first_name: 'first_name',
-						last_name: 'Williams',
-						email: 'info@abrazozo.com',
-						password: 'Fietsbel10',
-						role: '3'
+					  method: 'get',
+					  url: 'http://104.248.94.149/works/put_users.php?first_name=john&last_name=doe&email=info@abrazoazo.com&password=Fietsbel10',
 					  }
 					});
 
