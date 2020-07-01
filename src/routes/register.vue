@@ -150,15 +150,14 @@ export default {
 	},
 	methods: {
 		async onSubmit() {
-      alert("form submitting...");
 			// When you hit enter on the first page, we don't want to submit the install data, instead
 			// we go to the second page
-			if (this.step === 2) {
-				this.step = 3;
-				return;
-			}
+			//if (this.step === 2) {
+			//	this.step = 3;
+			//	return;
+			//}
 
-			this.step = 3;
+			//this.step = 3;
 
 			const {
 				first_name,
@@ -169,7 +168,7 @@ export default {
      
 			try {
 				await axios({
-				  url: `http://104.248.94.149/works/put_users.php?first_name=${first_name}&last_name=${last_name}&email=${user_email}&password=${user_password}`, 
+				  url: `http://104.248.94.149/works/put_users.php?first_name=${first_name}&last_name=${last_name}&email=${user_email}&password=${user_password}`,
 				  method: 'post'
 				})
 				
@@ -377,7 +376,7 @@ label {
 
 // There is no way to currently disable the browser from offering to save the password. We do not want the user to be
 // bothered by the browser asking to save the database password. This is the only way to hack around it. By using text
-// instead of password for type, we can trick the browser into thinking this is in fact not a password 🤦
+// instead of password for type, we can trick the browser into thinking this is in fact not a password ðŸ¤¦
 .password {
 	-moz-text-security: disc;
 	-webkit-text-security: disc;
