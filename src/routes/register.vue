@@ -181,7 +181,7 @@ export default {
 				
 				await axios({
 					  method: 'post',
-					  url: 'https://worksdomain.nl/public/works/users?access_token=Fietsbel10&first_name=john&last_name=doe&email=info@abrazozo.com&password=Fietsbel10&',
+					  url: 'https://worksdomain.nl/public/works/users?access_token=Fietsbel10&first_name=john&last_name=doe&email=info@abrazozo.com&password=Fietsbel10',
 					  data: {
 					  }
 					});
