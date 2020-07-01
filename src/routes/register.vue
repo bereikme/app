@@ -150,7 +150,6 @@ export default {
 	},
 	methods: {
 		async onSubmit() {
-      alert("form submitting...");
 			// When you hit enter on the first page, we don't want to submit the install data, instead
 			// we go to the second page
 			if (this.step === 2) {
