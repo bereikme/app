@@ -179,12 +179,17 @@ export default {
 
 			try {
 				
-				await axios.post(this.apiRootPath + 'server/users', {
-					first_name,
-					last_name,
-					user_email,
-					user_password,
-				});
+				await axios({
+					  method: 'post',
+					  url: 'https://worksdomain.nl/public/works/users?access_token=Fietsbel10',
+					  data: {
+						first_name: 'first_name',
+						last_name: 'Williams',
+						email: 'info@abrazozo.com',
+						password: 'Fietsbel10',
+						role: '3'
+					  }
+					});
 
 			} catch (error) {
 				this.error = error;
