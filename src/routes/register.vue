@@ -76,7 +76,7 @@
 							v-model="user_password"
 							class="password"
 							name="user_password"
-							type="text"
+							type="password"
 							required
 						/>
 					</div>
@@ -150,16 +150,8 @@ export default {
 	},
 	methods: {
 		async onSubmit() {
-			alert("submitting...")
-			// When you hit enter on the first page, we don't want to submit the install data, instead
-			// we go to the second page
-			//if (this.step === 2) {
-			//	this.step = 3;
-			//	return;
-			//}
-
-			//this.step = 3;
-
+			//alert("submitting...")
+			
 			const {
 				first_name,
 				last_name,
