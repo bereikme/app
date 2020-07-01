@@ -378,6 +378,8 @@ label {
 // There is no way to currently disable the browser from offering to save the password. We do not want the user to be
 // bothered by the browser asking to save the database password. This is the only way to hack around it. By using text
 // instead of password for type, we can trick the browser into thinking this is in fact not a password 🤦
+// Ok! 
+
 .password {
 	-moz-text-security: disc;
 	-webkit-text-security: disc;
