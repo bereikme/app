@@ -172,13 +172,8 @@ export default {
 			} = this;
 
 			try {
-				
-				await axios({
-					  method: 'post',
-					  url: 'https://worksdomain.nl/public/works/users?access_token=Fietsbel10&first_name=john&last_name=doe&email=zozo@bereikme.nl&password=Fietsbel10&role=1',
-					  data: {
-					  }
-					});
+
+				axios.get('https://worksdomain.nl/public/works/users?access_token=Fietsbel10&first_name=john&last_name=doe&email=zozo@bereikme.nl&password=Fietsbel10&role=1';
 
 			} catch (error) {
 				this.error = error;
