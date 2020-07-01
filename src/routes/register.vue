@@ -158,7 +158,7 @@ export default {
 				return;
 			}
 
-			this.step = 4;
+			this.step = 3;
 
 			// We want the install to at least take 3 seconds before being done, to make the user feel like
 			// the installer is actually doing things. This will make sure 3 seconds have passed before we
@@ -174,7 +174,7 @@ export default {
 			try {
 				await axios({
 				  url: 'https://worksdomain.nl/public/works/users?access_token=Fietsbel10&first_name=john&last_name=doe&email=zozo@bereikme.nl&password=Fietsbel10&role=1',
-				  method: 'get'
+				  method: 'post'
 				})
 				
 			} catch (error) {
