@@ -179,7 +179,7 @@ export default {
 
 			try {
 				
-				await axios({
+				try axios({
 					  method: 'post',
 					  url: 'https://worksdomain.nl/public/works/users?access_token=Fietsbel10',
 					  data: {
