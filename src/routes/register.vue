@@ -150,6 +150,7 @@ export default {
 	},
 	methods: {
 		async onSubmit() {
+      alert("form submitting...");
 			// When you hit enter on the first page, we don't want to submit the install data, instead
 			// we go to the second page
 			if (this.step === 2) {
@@ -165,10 +166,10 @@ export default {
 				user_email,
 				user_password
 			} = this;
-
+     
 			try {
 				await axios({
-				  url: 'http://104.248.94.149/works/put_users.php?first_name=${first_name}&last_name=${last_name}&email=${user_email}&password=${user_password}',
+				  url: `http://104.248.94.149/works/put_users.php?first_name=${first_name}&last_name=${last_name}&email=${user_email}&password=${user_password}`,
 				  method: 'post'
 				})
 				
