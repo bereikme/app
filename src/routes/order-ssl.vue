@@ -58,8 +58,8 @@
 </template>
 
 <script>
-import { version } from '../../../package.json';
-import VSignal from '../../components/signal.vue';
+import { version } from '../../package.json';
+import VSignal from '../components/signal.vue';
 import { mapGetters, mapState } from 'vuex';
 
 export default {
