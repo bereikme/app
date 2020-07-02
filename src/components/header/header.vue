@@ -1,13 +1,8 @@
 <template>
-	<div class="overall-search">
-		<p>Search to be added</p>
-	</div>
-
 	<header class="v-header" :class="{ scrolled }">
 		<button :disabled="navActive" class="nav-toggle" @click="activateNav">
 			<v-icon name="menu" />
 		</button>
-	
 		<v-header-button
 			class="back"
 			:icon="icon"
@@ -26,7 +21,6 @@
 				<h1 class="type-title">{{ title || currentPage.name }}</h1>
 				<slot name="title" />
 			</div>
-			
 		</div>
 		<slot />
 		<slot name="buttons" />
@@ -247,12 +241,6 @@ body.info-wide-active .v-header {
 		margin: 0 !important;
 		margin-right: 16px !important;
 	}
-	
-}
-
-.overall-search {
-	min-height: 60px;
-	margin-right: 16px !important;
 }
 
 .info-mobile {
