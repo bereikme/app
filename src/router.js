@@ -18,7 +18,6 @@ const ResetPassword = () =>
 	import(/* webpackChunkName: "reset-password" */ './routes/reset-password.vue');
 const Install = () => import(/* webpackChunkName: "install" */ './routes/install.vue');
 const Register = () => import(/* webpackChunkName: "register" */ './routes/register.vue');
-const Orderssl = () => import(/* webpackChunkName: "orderssl" */ './routes/order-ssl.vue'); 
 const NotFound = () => import(/* webpackChunkName: "not-found" */ './routes/not-found.vue');
 const Interfaces = () =>
 	import(/* webpackChunkName: "settings_interfaces" */ './routes/settings/interfaces.vue');
@@ -246,13 +245,6 @@ const router = new Router({
 		{
 			path: '/register',
 			component: Register,
-			meta: {
-				publicRoute: true
-			}
-		},
-		{
-			path: '/order-ssl',
-			component: Orderrssl,
 			meta: {
 				publicRoute: true
 			}
