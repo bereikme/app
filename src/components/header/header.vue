@@ -3,6 +3,10 @@
 		<button :disabled="navActive" class="nav-toggle" @click="activateNav">
 			<v-icon name="menu" />
 		</button>
+		<div class="overall-search">
+			<p>Search to be added</p>
+		</div>
+		
 		<v-header-button
 			class="back"
 			:icon="icon"
@@ -17,10 +21,6 @@
 				</li>
 			</ol>--> 
 
-			<div class="flex">
-				<h1 class="type-title">{{ title || currentPage.name }}</h1>
-				<slot name="title" />
-			</div>
 			<div class="flex">
 				<h1 class="type-title">{{ title || currentPage.name }}</h1>
 				<slot name="title" />
@@ -246,6 +246,12 @@ body.info-wide-active .v-header {
 		margin: 0 !important;
 		margin-right: 16px !important;
 	}
+	
+	.overall-search {
+		min-height: 60px;
+		margin-right: 16px !important;
+	}
+	
 }
 
 .info-mobile {
