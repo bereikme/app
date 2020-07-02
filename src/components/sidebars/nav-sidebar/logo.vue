@@ -67,7 +67,6 @@ export default {
 	}
 
 	.logo {
-		background-image: url('../../../assets/sprite.svg');
 		background-size: 600px 32px;
 		background-position: 0% 0%;
 		width: 40px;
