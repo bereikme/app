@@ -30,8 +30,6 @@ const Settings = () =>
 	import(/* webpackChunkName: "settings_settings" */ './routes/settings/settings.vue');
 const SettingsGlobal = () =>
 	import(/* webpackChunkName: "settings_global" */ './routes/settings/global.vue');
-const Dashboard = () =>
-	import(/* webpackChunkName: "settings_default" */ './routes/dashboard.vue');
 const SettingsCollections = () =>
 	import(/* webpackChunkName: "settings_collections" */ './routes/settings/collections.vue');
 const SettingsFields = () =>
