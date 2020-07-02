@@ -72,6 +72,15 @@
 					:label="$t('new')"
 					:to="createLink"
 				/>
+				<v-header-button
+					v-if="addButton && !activity"
+					key="order"
+					icon="shopping_cart"
+					icon-color="button-primary-text-color"
+					background-color="button-primary-background-color"
+					:label="$t('new')"
+					:to="createLink"
+				/>
 			</template>
 		</v-header>
 
