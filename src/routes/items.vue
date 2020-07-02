@@ -204,10 +204,10 @@ export default {
 			}
 
 			if (this.collection === 'domains') {
-				return `/${this.currentProjectKey}/order-domain`;
+				return `/${this.currentProjectKey}/order-ssl`;
 			}
 			
-			if (this.collection === 'ssl') {
+			if (this.collection === 'certificates') {
 				return `/${this.currentProjectKey}/order-ssl`;
 			}
 			

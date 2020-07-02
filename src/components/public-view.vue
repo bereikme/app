@@ -148,7 +148,7 @@ export default {
 	.public-note {
 		position: absolute;
 		bottom: 20px;
-		right: 20px;
+		left: 20px;
 		background-color: rgba(0, 0, 0, 0.3);
 		backdrop-filter: blur(10px);
 		color: var(--white);
