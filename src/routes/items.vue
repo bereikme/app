@@ -224,7 +224,7 @@ export default {
 				return `/${this.currentProjectKey}/order-lei`;
 			}
 
-			if (this.collection === 'lei') {
+			if (this.collection === 'dns') {
 				return `/${this.currentProjectKey}/order-dns`;
 			}
 
