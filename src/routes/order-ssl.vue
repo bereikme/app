@@ -16,7 +16,7 @@
 				<div class="field-grid">
 					<div class="field">
 						<h2 class="type-title">{{ $t('create_new_account') }}</h2>
-						<p>{{ $t('create_new_account_description') }}</p>
+						<p>{{ $t('create_new_account_decription') }}</p>
 						<input
 							v-model="super_admin_token"
 							v-focus
