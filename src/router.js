@@ -168,13 +168,6 @@ const router = new Router({
 			alias: '/:project/activity/:primaryKey'
 		},
 		{
-			path: '/:project/dashboard',
-			component: Dashboard,
-			meta: {
-				publicRoute: true
-			}
-		},
-		{
 			path: '/:project/settings',
 			component: Settings
 		},
