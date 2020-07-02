@@ -137,15 +137,14 @@ export default {
 		return {
 			step: 1,
 			first_name: 'enter your first name',
-			last_name: '',
-			user_email: '',
+			last_name: 'enter your last name',
+			user_email: 'john.doe@acme.inc',
 			user_password: '',
 			notice: {
 				text: this.$t('already_have_an_account'),
 				color: 'blue-grey-100',
 				icon: 'outlined_flag'
 			},
-			//fetchingRequirements: false
 		};
 	},
 	methods: {
@@ -366,11 +365,6 @@ legend {
 label {
 	margin-bottom: 8px;
 }
-
-// There is no way to currently disable the browser from offering to save the password. We do not want the user to be
-// bothered by the browser asking to save the database password. This is the only way to hack around it. By using text
-// instead of password for type, we can trick the browser into thinking this is in fact not a password 🤦
-// Ok! 
 
 .password {
 	-moz-text-security: disc;
