@@ -140,12 +140,14 @@ export default {
 			first_name: 'enter your first name',
 			last_name: 'enter your last name',
 			user_email: 'john.doe@acme.inc',
-			user_password: '',
-			notice: {
-				text: this.$t('already_have_an_account'),
-				color: 'blue-grey-100',
-				icon: 'outlined_flag'
-			},
+			user_password: ''		
+		};
+		return {
+			step: 2,
+			first_name: 'enter your first name',
+			last_name: 'enter your last name',
+			user_email: 'john.doe@acme.inc',
+			user_password: ''		
 		};
 	},
 	methods: {

@@ -1,13 +1,6 @@
 <template>
 	<div class="public">
-		<div class="container" :class="{ wide }">
-			<div class="content">
-				<h1 class="title type-heading-large">{{ heading }}</h1>
-				<slot />
-			</div>
-			<div class="public-view-notice"><slot name="notice" /></div>
-		</div>
-		<div class="art" :style="artStyles">
+	<div class="art" :style="artStyles">
 			<img
 				class="background-right"
 				src="http://www.seekgif.com/uploads/green-blurry-background-0.jpg"
@@ -18,7 +11,14 @@
 				v-html="project_public_note"
 			/>
 		</div> 
-	</div>
+		<div class="container" :class="{ wide }">
+			<div class="content">
+				<h1 class="title type-heading-large">{{ heading }}</h1>
+				<slot />
+			</div>
+			<div class="public-view-notice"><slot name="notice" /></div>
+		</div>
+			</div>
 </template>
 
 <script>
