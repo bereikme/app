@@ -21,6 +21,11 @@
 				<h1 class="type-title">{{ title || currentPage.name }}</h1>
 				<slot name="title" />
 			</div>
+			<div class="flex">
+				<h1 class="type-title">{{ title || currentPage.name }}</h1>
+				<slot name="title" />
+			</div>
+			
 		</div>
 		<slot />
 		<slot name="buttons" />
