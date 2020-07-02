@@ -15,7 +15,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.small-style {
+.alert-style {
 	position: relative;
 	padding-top: 12px;
 	&.margin {
@@ -49,7 +49,7 @@ export default {
 	}
 }
 
-.medium-style {
+.comment-style {
 	padding-top: 12px;
 	&.margin {
 		margin-top: 48px;
@@ -74,7 +74,7 @@ export default {
 	}
 }
 
-.large-style {
+.hint-style {
 	padding-top: 12px;
 	&.margin {
 		margin-top: 48px;

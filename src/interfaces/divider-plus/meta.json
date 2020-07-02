@@ -11,13 +11,13 @@
     "style": {
       "name": "$t:style-name",
       "comment": "$t:style-comment",
-      "default": "large",
+      "default": "Comment",
       "interface": "dropdown",
       "options": {
         "choices": {
-          "small": "Small",
-          "medium": "Medium",
-          "large": "Large"
+          "alert": "Alert",
+          "hint": "Hint",
+          "comment": "Comment"
         }
       }
     },
