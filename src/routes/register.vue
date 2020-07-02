@@ -337,7 +337,6 @@ legend {
 
 .stepper {
 	margin-bottom: 64px;
-	max-width: 320px;
 }
 
 .progress-bar {
