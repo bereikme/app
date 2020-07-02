@@ -77,6 +77,7 @@
 							class="password"
 							name="user_password"
 							type="password" 
+							tooltip="this is a tooltip"
 							required
 						/>
 					</div>
