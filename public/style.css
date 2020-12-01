@@ -7,3 +7,5 @@
     the head _after_ this file. If you want to override the globally used CSS variables, you can either
     use !important, or increase the specificity from :root
 */
+
+.v logo background-image: url(); 
