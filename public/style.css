@@ -7,3 +7,11 @@
     the head _after_ this file. If you want to override the globally used CSS variables, you can either
     use !important, or increase the specificity from :root
 */
+
+
+--brand: var(--blue-grey-900);
+--accent: var(--blue-500);
+--action: var(--blue-grey-800);
+--success: var(--green);
+--warning: var(--orange);
+--danger: var(--red);
