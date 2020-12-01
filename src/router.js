@@ -17,7 +17,6 @@ const Setup2FA = () => import(/* webpackChunkName: "setup-2fa" */ './routes/setu
 const ResetPassword = () =>
 	import(/* webpackChunkName: "reset-password" */ './routes/reset-password.vue');
 const Install = () => import(/* webpackChunkName: "install" */ './routes/install.vue');
-const Register = () => import(/* webpackChunkName: "register" */ './routes/register.vue');
 const NotFound = () => import(/* webpackChunkName: "not-found" */ './routes/not-found.vue');
 const Interfaces = () =>
 	import(/* webpackChunkName: "settings_interfaces" */ './routes/settings/interfaces.vue');
@@ -27,8 +26,6 @@ const InterfaceDebugger = () =>
 	);
 const Settings = () =>
 	import(/* webpackChunkName: "settings_settings" */ './routes/settings/settings.vue');
-const Orderssl = () =>
-	import(/* webpackChunkName: "orderssl" */ './routes/order-ssl.vue');
 const SettingsGlobal = () =>
 	import(/* webpackChunkName: "settings_global" */ './routes/settings/global.vue');
 const SettingsCollections = () =>
@@ -173,10 +170,6 @@ const router = new Router({
 			component: Settings
 		},
 		{
-			path: '/:project/order-ssl',
-			component: Orderssl
-		},
-		{
 			path: '/:project/settings/global',
 			component: SettingsGlobal
 		},
@@ -230,18 +223,9 @@ const router = new Router({
 				publicRoute: true
 			}
 		},
-		/*
 		{
 			path: '/install',
 			component: Install,
-			meta: {
-				publicRoute: true
-			}
-		},
-		*/
-		{
-			path: '/register',
-			component: Register,
 			meta: {
 				publicRoute: true
 			}
@@ -276,16 +260,10 @@ router.beforeEach(async (to, from, next) => {
 		await store.dispatch('getProjects');
 	}
 
-	/*
-
 	// It's false when there aren't any projects installed (no private ones either)
 	if (store.state.projects === false && to.path !== '/install') {
 		return next('/install');
 	}
-	
-	Disabled the installation folder. 
-	
-	*/
 
 	if (publicRoute) {
 		return next();

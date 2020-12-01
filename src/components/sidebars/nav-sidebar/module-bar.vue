@@ -154,21 +154,9 @@ export default {
 			const modules = [];
 
 			modules.push({
-				link: `/${this.currentProjectKey}/dashboard`,
-				name: this.$t('dashboard'),
-				icon: 'home'
-			});
-
-			modules.push({
-				link: `/${this.currentProjectKey}/collections/shop`,
-				name: this.$t('shop'),
-				icon: 'person'
-			});
-			 
-			modules.push({
-				link: `/${this.currentProjectKey}/collections/invoices`,
-				name: this.$t('balance'),
-				icon: 'person'
+				link: `/${this.currentProjectKey}/collections`,
+				name: this.$tc('collection', 2),
+				icon: 'box'
 			});
 
 			if (
@@ -191,12 +179,11 @@ export default {
 			}
 
 			modules.push({
-				link: `/${this.currentProjectKey}/collections/help`,
+				link: 'https://docs.directus.io',
 				name: this.$t('help_and_docs'),
 				icon: 'help'
 			});
-			
-			/*
+
 			const moduleExtensions = this.$store.state.extensions.modules;
 
 			forEach(moduleExtensions, (info, key) => {
@@ -206,7 +193,7 @@ export default {
 					icon: info.icon
 				});
 			});
-			*/
+
 			return modules;
 		}
 	}

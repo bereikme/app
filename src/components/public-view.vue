@@ -1,24 +1,33 @@
 <template>
 	<div class="public">
-	<div class="art" :style="artStyles">
-			<img
-				class="background-right"
-				src="http://www.seekgif.com/uploads/green-blurry-background-0.jpg"
-			/>
-			<div
-				v-if="project_public_note"
-				class="public-note selectable"
-				v-html="project_public_note"
-			/>
-		</div> 
 		<div class="container" :class="{ wide }">
+			<a href="https://directus.io" target="_blank" class="logo">
+				<img
+					v-tooltip.right="{ classes: ['inverted'], content: version }"
+					alt="Directus Logo"
+					src="../assets/logo-dark.svg"
+				/>
+			</a>
 			<div class="content">
 				<h1 class="title type-heading-large">{{ heading }}</h1>
 				<slot />
 			</div>
 			<div class="public-view-notice"><slot name="notice" /></div>
 		</div>
-			</div>
+		<div class="art" :style="artStyles">
+			<img
+				v-if="project_foreground.asset_url"
+				class="logo"
+				:src="project_foreground.asset_url"
+				:alt="project_name"
+			/>
+			<div
+				v-if="project_public_note"
+				class="public-note selectable"
+				v-html="project_public_note"
+			/>
+		</div>
+	</div>
 </template>
 
 <script>
@@ -140,15 +149,16 @@ export default {
 	justify-content: center;
 	align-items: center;
 
-	.background-right {
+	.logo {
 		width: 100%;
-		height: 100%
+		max-width: 340px;
+		height: auto;
 	}
 
 	.public-note {
 		position: absolute;
 		bottom: 20px;
-		left: 20px;
+		right: 20px;
 		background-color: rgba(0, 0, 0, 0.3);
 		backdrop-filter: blur(10px);
 		color: var(--white);

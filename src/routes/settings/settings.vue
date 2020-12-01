@@ -1,6 +1,6 @@
 <template>
 	<div class="settings">
-		<v-header :breadcrumb="links" icon="settings" settings /> 
+		<v-header :breadcrumb="links" icon="settings" settings />
 
 		<v-details :title="$t('settings_project')" type="break" open>
 			<nav>
@@ -10,14 +10,6 @@
 						:subtitle="$tc('item_count', globalNum, { count: globalNum })"
 						element="li"
 						:to="`/${currentProjectKey}/settings/global`"
-						icon="public"
-					/>
-					
-					<v-card
-						:title="$t('settings_default')"
-						:subtitle="$tc('item_count', globalNum, { count: globalNum })"
-						element="li"
-						:to="`/${currentProjectKey}/settings/default`"
 						icon="public"
 					/>
 
@@ -49,7 +41,90 @@
 				</ul>
 			</nav>
 		</v-details>
-	
+
+		<v-details :title="$t('additional_info')" type="break" open>
+			<nav>
+				<ul>
+					<v-card
+						:title="$tc('interface', 2)"
+						:subtitle="
+							$tc('interface_count', interfaceCount, { count: interfaceCount })
+						"
+						element="li"
+						:to="`/${currentProjectKey}/settings/interfaces`"
+						icon="extension"
+					/>
+
+					<v-card
+						:title="$t('activity_log')"
+						:subtitle="activityCount"
+						element="li"
+						:to="`/${currentProjectKey}/activity`"
+						icon="assignment"
+					/>
+
+					<v-card
+						:title="$t('about_directus')"
+						:subtitle="$t('learn_more')"
+						element="li"
+						href="https://directus.io"
+						icon="info_outline"
+					/>
+
+					<v-card
+						:title="$t('report_issue')"
+						:subtitle="$t('open_on_gh')"
+						element="li"
+						href="https://github.com/directus/app/issues/new?template=Bug_report.md"
+						icon="bug_report"
+					/>
+
+					<v-card
+						:title="$t('request_feature')"
+						:subtitle="$t('open_on_gh')"
+						element="li"
+						href="https://github.com/directus/app/issues/new?template=Feature_request.md"
+						icon="how_to_vote"
+					/>
+				</ul>
+			</nav>
+		</v-details>
+		<v-details :title="$t('coming_soon')" type="break" open>
+			<nav>
+				<ul>
+					<v-card
+						:title="$t('connection')"
+						:subtitle="
+							`${$t('latency')}: ${$n(
+								Math.round(
+									$store.state.latency[$store.state.latency.length - 1].latency
+								)
+							)}ms`
+						"
+						disabled
+						element="li"
+					>
+						<v-signal slot="icon" class="signal" />
+					</v-card>
+
+					<v-card
+						:title="$t('server_details')"
+						disabled
+						:subtitle="projectName"
+						element="li"
+						icon="storage"
+					/>
+
+					<v-card
+						:title="$t('version_and_updates')"
+						disabled
+						:subtitle="version"
+						element="li"
+						icon="update"
+					/>
+				</ul>
+			</nav>
+		</v-details>
 
 		<v-info-sidebar wide>
 			<span class="type-note">No settings</span>
@@ -119,7 +194,7 @@ export default {
 				.getItems('directus_roles', {
 					fields: '-',
 					limit: 0,
-					meta: 'total_count' 
+					meta: 'total_count'
 				})
 				.then(res => res.meta)
 				.then(({ total_count }) => {

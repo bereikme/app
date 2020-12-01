@@ -203,22 +203,6 @@ export default {
 				return `/${this.currentProjectKey}/${this.collection.substr(9)}/+`;
 			}
 
-			if (this.collection === 'domains') {
-				return `/${this.currentProjectKey}/order-ssl`;
-			}
-			
-			if (this.collection === 'certificates') {
-				return `/${this.currentProjectKey}/order-ssl`;
-			}
-			
-			if (this.collection === 'lei') {
-				return `/${this.currentProjectKey}/order-lei`;
-			}
-
-			if (this.collection === 'dns') {
-				return `/${this.currentProjectKey}/order-dns`;
-			}
-
 			return `/${this.currentProjectKey}/collections/${this.collection}/+`;
 		},
 		breadcrumb() {
